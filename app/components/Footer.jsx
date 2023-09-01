@@ -2,7 +2,7 @@ import { DevicePhoneMobileIcon, EnvelopeIcon } from "@heroicons/react/20/solid";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-24 py-5 items-center">
+    <footer className="flex justify-between flex-wrap bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-24 py-5 items-center">
       <div className="text-2xl font-bold">
         Kaiser <br /> Hamid
       </div>
