@@ -12,26 +12,26 @@ export default function Home() {
     <>
       <section
         id="hero"
-        className="flex justify-around bg-color3 dark:bg-color2 text-color1 dark:text-color4 items-center pt-20"
+        className="flex flex-wrap px-3 justify-around bg-color3 dark:bg-color2 text-color1 dark:text-color4 items-center pt-20"
       >
         <div className="pb-20 flex flex-col items-center gap-3">
-          <h1 className="text-5xl font-bold">Kaiser Hamid</h1>
-          <em className="text-2xl">
+          <h1 className="text-3xl sm:text-5xl font-bold">Kaiser Hamid</h1>
+          <em className="text-sm sm:text-2xl">
             Final year undergrad student at{" "}
             <a
               href="https://www.buet.ac.bd/web/"
               className="text-orange-600"
               target="_blank"
             >
-              BUET
+               BUET
             </a>
           </em>
-          <p className="text-xl">
+          <p className="text-sm sm:text-xl">
             Pronouns: <span>He/Him/His</span>
           </p>
           <a
             href="mailto:kaiserhamid715@gmail.com"
-            className="flex gap-3 items-center text-xl"
+            className="flex gap-3 items-center text-sm sm:text-xl"
           >
             <EnvelopeIcon
               className="-mr-1 h-6 w-6 text-color2 dark:text-color4"
@@ -75,10 +75,10 @@ export default function Home() {
           />
         </div>
       </section>
-<main className="p-3 m-3">
-<section id="about-me" className="p-10 m-10">
-        <h2 className="text-4xl font-bold text-center p-3 m-3">About Me</h2>
-        <p className="text-justify px-20 mx-20">
+<main className="m-3 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw]  ">
+<section id="about-me" className="py-5 my-10">
+        <h2 className="text-4xl font-bold text-center py-3 my-3">About Me</h2>
+        <p className="text-justify xl:px-20 xl:mx-20">
           I am an incoming Ph.D. student at Arizona State Univeristy where I
           will work in the Embedded Machine Intelligence Lab (EMIL). Previously
           I worked as a Software Engineer in IQVIA (North Carolina-based
@@ -100,11 +100,11 @@ export default function Home() {
         </p>
       </section>
 
-      <section className="p-10 m-10">
-        <h2 className="text-4xl font-bold text-center p-3 m-3">
+      <section className="py-5 my-10">
+        <h2 className="text-4xl font-bold text-center py-3 my-3">
           Latest News!!
         </h2>
-        <ul className="text-justify px-20 mx-20">
+        <ul className="text-justify">
           <li>
           October, 2022: Submitted my first research paper in ICCIT, 2022
           </li>
