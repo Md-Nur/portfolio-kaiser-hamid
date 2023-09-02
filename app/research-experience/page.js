@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 let researchData = [
   {
@@ -9,7 +8,7 @@ let researchData = [
     supervisor: "Prof. Dr. A B M Alim Al Islam, CSE, BUET",
     description:
       "We are examining if the use of social media in Bangladesh contributes to a breakdown in communication between family members. Data has been collected using semi-structured face-to-face interviews. The Thematic technique will be used to collect and evaluate data from the recorded audio scripts of our interviewees in order to identify a pattern.",
-    imageUrls: ["/./research-xp/r1.jpeg"],
+    imageUrls: ["./research-xp/r1.jpeg"],
     imageTitle: "",
     main_objectives: [],
     external_collaborators: [{ name: "", company: "", education: "" }],
@@ -24,7 +23,7 @@ let researchData = [
     supervisor: "",
     description:
       "Worked an ethnographer using the thematic method to interview data. Our study looked at 19 digital service centers in Bangladesh. The findings showed that customers of these centers were vulnerable to privacy breaches due to a lack of infrastructure, local power politics, a lack of knowledge, and inadequate protection mechanisms.",
-    imageUrls: ["/./research-xp/r2.JPG"],
+    imageUrls: ["./research-xp/r2.JPG"],
     imageTitle: "",
     main_objectives: [],
     external_collaborators: [{ name: "", company: "", education: "" }],
@@ -39,7 +38,7 @@ let researchData = [
     supervisor: "Prof. Dr. A B M Alim Al Islam, CSE, BUET",
     description:
       "I wanted to extend one of Dr. Hossain’s previous research where he used 1-step transition probability between the system calls to detect malware apk. As the prior model cannot capture the order or structure of system calls, it lacks semantic information. So after conducting a literature review to identify the limitations of the existing method for evading System Call-based Intrusion Detection System (IDS), I proposed a Machine Learning based robust dynamic method to detect malware apks, that can automatically execute the code routines as well as generate the user behavior of the android app.",
-    imageUrls: ["/./research-xp/r3.png", "/./research-xp/r5.png"],
+    imageUrls: ["./research-xp/r3.png", "./research-xp/r5.png"],
     imageTitle: "fig:work process and parsed system calls",
     main_objectives: [
       "Generate user behavior during the system call retrieval from a virtual android device",
@@ -66,9 +65,9 @@ let researchData = [
     description:
       "I have developed a clinical big data platform prototype-NCDW, integrating ambient data from 34 weather stations of Bangladesh Meteorological Department (BMD) as a proof of concept and solved the fundamental obstacle for data-driven communicable and non-communicable disease research, including record-linkage, privacy, and security, standardization, and interoperability. I submitted the conceptual design of my proposed system to Bangladesh Space Research and Remote Sensing Organization (SPARRSO) and secured their “Research Fellowship”. This platform enhance descriptive, diagnostic,predictive, and prescriptive analysis and research for a wide variety of diseases.",
     imageUrls: [
-      "/./research-xp/r6.jpg",
-      "/./research-xp/r7.png",
-      "/./research-xp/r8.png",
+      "./research-xp/r6.jpg",
+      "./research-xp/r7.png",
+      "./research-xp/r8.png",
     ],
     imageTitle: "fig:Architecture, Data Cube and Possible Outbreak",
     main_objectives: [
@@ -139,7 +138,7 @@ let researchData = [
     supervisor: "",
     description:
       "Brain MRIs are notoriously imprecise in revealing the presence or absence of tumors. Using MRI scans of the brain, a Convolutional Neural Network (CNN) was trained to identify the presence of a tumor in this research. In order to evaluate the CNN model's capability for processing images, we applied the extracted features from DL different models into following ML models: KNN, Logistic regression, SVM, Random Forest, Naive Bayes, and Perception.\nWe have implemented four different models which are Densenet, Resnet50, EfficientnetB0, and our own custom CNN model. For optimization of our deep learning model, we used Adam algorithm. First, the performance is evaluated using several performance metrics. During the training of a model, we concentrated on reducing loss while simultaneously boosting accuracy",
-    imageUrls: ["/./research-xp/r9.png", "/./research-xp/r10.png"],
+    imageUrls: ["./research-xp/r9.png", "./research-xp/r10.png"],
     imageTitle: "fig:work process and accuracy",
     main_objectives: [],
     external_collaborators: [{ name: "", company: "", education: "" }],
@@ -201,11 +200,9 @@ const page = () => {
                 ) : null}
                 <div className="flex flex-wrap gap-5 justify-around">
                   {data.imageUrls.map((url) => (
-                    <Image
+                    <img
                       src={url}
                       alt="Picture of work"
-                      width={500}
-                      height={500}
                       className="dark:bg-white"
                     />
                   ))}
