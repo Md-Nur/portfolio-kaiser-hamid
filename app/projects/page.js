@@ -30,7 +30,7 @@ let projectData = [
       "Online Book-selling and giveaway platform. Users can purchase books from their local bookstores and even add sale posts. Additionally, users may donate their unused old books",
     referenceLinks: [
       {
-        preview: "Visti Live Site",
+        preview: "Visit Live Site",
         url: "https://bookazon-frontend.herokuapp.com/",
       },
     ],
