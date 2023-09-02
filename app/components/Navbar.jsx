@@ -89,7 +89,7 @@ function Navbar() {
               </Link>
             </li>
             <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-              <Link className="hover:underline" href="skills.html">
+              <Link className="hover:underline" href="./skill">
                 Skills
               </Link>
             </li>
@@ -99,12 +99,12 @@ function Navbar() {
               </Link>
             </li>
             <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-              <Link className="hover:underline" href="achievements.html">
+              <Link className="hover:underline" href="./achievements">
                 Achievements
               </Link>
             </li>
             <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-              <Link className="hover:underline" href="activities.html">
+              <Link className="hover:underline" href="./activites">
                 Activities
               </Link>
             </li>
@@ -160,7 +160,7 @@ function Navbar() {
             </Link>
           </li>
           <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-            <Link className="nav-link" href="skills.html">
+            <Link className="nav-link" href="./skill">
               Skills
             </Link>
           </li>
@@ -170,12 +170,12 @@ function Navbar() {
             </Link>
           </li>
           <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-            <Link className="nav-link" href="achievements.html">
+            <Link className="nav-link" href="./achievements">
               Achievements
             </Link>
           </li>
           <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-            <Link className="nav-link" href="activities.html">
+            <Link className="nav-link" href="./activites">
               Activities
             </Link>
           </li>
