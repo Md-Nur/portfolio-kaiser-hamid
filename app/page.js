@@ -36,7 +36,7 @@ export default function Home() {
     <>
       <section
         id="hero"
-        className="flex flex-wrap px-3 justify-around bg-color3 dark:bg-color2 text-color1 dark:text-color4 items-center pt-20"
+        className="flex flex-wrap px-3 justify-around bg-gradient-to-b from-color3 to-color4 dark:from-color2 dark:to-color1 text-color1 dark:text-color4 items-center py-10"
       >
         <div className="pb-20 flex flex-col items-center gap-3">
           <h1 className="text-3xl sm:text-5xl font-bold">Kaiser Hamid</h1>
@@ -90,12 +90,13 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div>
+        <div className="">
           <Image
             src="/hero.png"
             alt="Picture of the author"
-            width={510}
-            height={745}
+            width={500}
+            height={500}
+            className="pt-3 shadow-xl shadow-color2 dark:shadow-color3 rounded-full"
           />
         </div>
       </section>

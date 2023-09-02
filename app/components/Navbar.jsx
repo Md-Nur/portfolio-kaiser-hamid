@@ -40,7 +40,7 @@ function Navbar() {
       <nav className="fixed w-screen flex justify-evenly  bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
         <div className="text-lg font-bold">Kaiser</div>
 
-        <div className="w-full text-sm hidden md:block max-w-[1000px]">
+        <div className="w-full text-sm font-bold hidden md:block max-w-[1000px]">
           <ul className="flex justify-evenly text-center">
             <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md" id="home">
               <Link className="hover:underline" aria-current="page" href="./">
