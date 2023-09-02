@@ -84,7 +84,7 @@ const page = () => {
                 <a
                   href={award.youtubeLink}
                   target="_blank"
-                  className="text-sm text-center md:text-base lg:text-lg text-green-500 hover:underline"
+                  className="text-sm text-center md:text-base lg:text-lg   hover:underline"
                 >
                   [Youtube Link]
                 </a>
@@ -94,7 +94,7 @@ const page = () => {
                   href={award.posterLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-center md:text-base lg:text-lg text-green-500 hover:underline"
+                  className="text-sm text-center md:text-base lg:text-lg   hover:underline"
                 >
                   [Poster Link]
                 </a>
@@ -120,7 +120,7 @@ const page = () => {
               <a
                 href={certification.youtubeLink}
                 target="_blank"
-                className="text-sm text-center md:text-base lg:text-lg text-green-500 hover:underline"
+                className="text-sm text-center md:text-base lg:text-lg   hover:underline"
               >
                 [Youtube Link]
               </a>

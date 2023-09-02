@@ -107,7 +107,7 @@ const page = () => {
         {projectData.map((data) => (
           <div className="flex justify-between items-center mb-20 flex-wrap">
             <div className="text-xl font-bold">{data.title}</div>
-            <div className="text-green-500">
+            <div className=" ">
               <em>({data.duration})</em>
             </div>
             {data.technologies ? (
@@ -119,7 +119,7 @@ const page = () => {
               <div className="text-lg py-3">
                 <div className="">
                   {data.referenceLinks.map((obj) => (
-                    <a href={obj.url} className="px-2 text-green-500">
+                    <a href={obj.url} className="px-2  ">
                       [{obj.preview}]
                     </a>
                   ))}

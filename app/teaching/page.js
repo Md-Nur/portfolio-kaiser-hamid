@@ -40,13 +40,13 @@ const page = () => {
               className="flex flex-wrap my-5 justify-between gap-3"
             >
               <h2 className="text-2xl sm:text-4xl font-bold">{data.title}</h2>
-              <span className="text-sm px-5 sm:text-lg text-green-500">
+              <span className="text-sm px-5 sm:text-lg  ">
                 {data.date}
               </span>
               <span className="text-sm px-5 sm:text-lg">
                 {data.description}
               </span>
-              <span className="text-sm px-5 sm:text-lg text-green-500">
+              <span className="text-sm px-5 sm:text-lg  ">
                 {data.company}
               </span>
             </div>
