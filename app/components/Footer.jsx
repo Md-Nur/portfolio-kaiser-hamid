@@ -1,5 +1,5 @@
-import { DevicePhoneMobileIcon, EnvelopeIcon } from "@heroicons/react/20/solid";
-
+import { EnvelopeIcon } from "@heroicons/react/20/solid";
+import { ImLocation2 } from "react-icons/im";
 const Footer = () => {
   return (
     <footer className="flex justify-center md:justify-between flex-wrap gap-5 bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 sm:px-24 py-5 items-center">
@@ -11,14 +11,13 @@ const Footer = () => {
         <p>© Kaiser Hamid - 2023</p>
       </div>
       <div className="flex flex-col justify-evenly">
-        <a href="tel:+8801865581190" className="flex gap-1">
+        <address className="flex gap-1 items-center">
           {" "}
-          <DevicePhoneMobileIcon
-            className="-mr-1 h-5 w-5 text-color1 dark:text-color4"
-            aria-hidden="true"
+          <ImLocation2
+          className="-mr-1 h-5 w-5 text-color1 dark:text-color4"
           />
-          +880 1865-581190
-        </a>
+          Pallabi, Mirpur-12, Dhaka-1216
+        </address>
 
         <a
           href="mailto:kaiserhamid715@gmail.com"
