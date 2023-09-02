@@ -37,12 +37,15 @@ function Navbar() {
 
   return (
     <header className=" bg-color3 dark:bg-color2 text-color1 dark:text-color4">
-      <nav className="fixed w-screen flex justify-evenly  bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
+      <nav className="fixed w-screen flex justify-evenly bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
         <div className="text-lg font-bold">Kaiser</div>
 
         <div className="w-full text-sm hidden md:block max-w-[1000px]">
           <ul className="flex justify-evenly text-center">
-            <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md" id="home">
+            <li
+              className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md"
+              id="home"
+            >
               <Link className="hover:underline" aria-current="page" href="./">
                 Home
               </Link>
@@ -58,30 +61,26 @@ function Navbar() {
               </Link>
             </li>
 
-            <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md dropdown">
-              <button className="flex focus:underline" onClick={handleDropdown}>
-                Experience
-                <ChevronDownIcon
-                  className="-mr-1 h-5 w-5 text-color2 dark:text-color4"
-                  aria-hidden="true"
-                />
-              </button>
-              <div
-                className={`absolute w-28 text-center ${dropdownDisplay} mt-2 space-y-2 rounded bg-color3 dark:bg-color2  group-hover:block`}
-              >
-                <Link
-                  href="./research-experience"
-                  className="block hover:bg-color4 dark:hover:bg-color1 rounded p-2"
-                >
-                  Research Experience
-                </Link>
-                <Link
-                  href="./professional-experience"
-                  className="block hover:bg-color4 dark:hover:bg-color1 rounded p-2"
-                >
-                  Professional Experience
-                </Link>
-              </div>
+            <li >
+              <select className="flex hover:underline hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md bg-color3 dark:bg-color2 text-color1 dark:text-color4 w-28">
+                <option>Experience</option>
+                <option>
+                  <a
+                    href="./research-experience"
+                    className="block hover:bg-color4 dark:hover:bg-color1 rounded p-2"
+                  >
+                    Research Experience
+                  </a>
+                </option>
+                <option>
+                  <a
+                    href="./professional-experience"
+                    className="block hover:bg-color4 dark:hover:bg-color1 rounded p-2"
+                  >
+                    Professional Experience
+                  </a>
+                </option>
+              </select>
             </li>
             <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
               <Link className="hover:underline" href="./teaching">
@@ -122,7 +121,10 @@ function Navbar() {
         className={`w-full fixed bg-color3 dark:bg-color2 text-color1 dark:text-color4  bg-opacity-80 dark:bg-opacity-80 ${menuDisplay} md:hidden`}
       >
         <ul className="text-center">
-          <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md" id="home">
+          <li
+            className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md"
+            id="home"
+          >
             <Link className="nav-link" aria-current="page" href="./">
               Home
             </Link>
@@ -139,18 +141,12 @@ function Navbar() {
           </li>
 
           <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-            <Link
-              href="./research-experience"
-              className=""
-            >
+            <Link href="./research-experience" className="">
               Research Experience
             </Link>
           </li>
           <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-            <Link
-              href="./professional-experience"
-              className=""
-            >
+            <Link href="./professional-experience" className="">
               Professional Experience
             </Link>
           </li>
@@ -181,8 +177,9 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <div className={`h-80 ${menuDisplay} md:hidden`}>{/* buffer space */}</div>
-
+      <div className={`h-80 ${menuDisplay} md:hidden`}>
+        {/* buffer space */}
+      </div>
     </header>
   );
 }
