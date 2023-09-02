@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hobe {
+  color: #263658;
+  color: #15575e;
+  color: #37d3f6;
+  color: #c2f5e8;
+}

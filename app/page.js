@@ -44,7 +44,7 @@ export default function Home() {
             Final year undergrad student at{" "}
             <a
               href="https://www.buet.ac.bd/web/"
-              className="text-orange-600"
+              className="text-green-700"
               target="_blank"
             >
               BUET
@@ -62,7 +62,7 @@ export default function Home() {
               aria-hidden="true"
             />
             <span>Email: </span>
-            <span className="text-orange-600">kaiserhamid715@gmail.com</span>
+            <span className="text-green-700">kaiserhamid715@gmail.com</span>
           </a>
 
           <a

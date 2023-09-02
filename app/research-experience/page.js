@@ -157,7 +157,7 @@ const page = () => {
         {researchData.map((data) => (
           <div className="flex justify-between items-baseline mb-20 flex-wrap">
             <span className="text-xl font-bold">{data.title}</span>
-            <span className="text-orange-500">
+            <span className="text-green-500">
               <em>({data.duration})</em>
             </span>
             {data.supervisor ? (
@@ -170,7 +170,7 @@ const page = () => {
               <span className="text-lg">
                 You can read my thesis{" "}
                 <Link
-                  className="text-orange-500"
+                  className="text-green-500"
                   href={data.supervisor}
                   target="_blank"
                 >
@@ -182,7 +182,7 @@ const page = () => {
               <span className="">
                 You can read my published articles from{" "}
                 <Link
-                  className="text-orange-500"
+                  className="text-green-500"
                   href={data.publicationsUrl}
                   target="_blank"
                 >

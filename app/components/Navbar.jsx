@@ -62,7 +62,7 @@ function Navbar() {
               <button className="flex focus:underline" onClick={handleDropdown}>
                 Experience
                 <ChevronDownIcon
-                  className="-mr-1 h-5 w-5 text-color2 dark:text-color4"
+                  className="-mr-1 h-5 w-5 text-color1 dark:text-color4"
                   aria-hidden="true"
                 />
               </button>

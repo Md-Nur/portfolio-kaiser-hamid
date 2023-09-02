@@ -37,7 +37,7 @@ const page = () => {
             <p className="text-sm">{publication.description}</p>
             <a
               href={publication.asset}
-              className="text-orange-500 hover:text-orange-700"
+              className="text-green-500 hover:text-orange-700"
               target="_blank"
               rel="noopener noreferrer"
             >
