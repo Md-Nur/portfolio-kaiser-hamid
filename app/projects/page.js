@@ -101,7 +101,7 @@ const page = () => {
   return (
     <section className="m-3 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw]">
       <h2 className="text-4xl font-bold text-center py-3 my-3">
-        Research Experience
+        Projects
       </h2>
       <div className="text-justify items-center justify-center pl-1 flex flex-col gap-10 mt-10">
         {projectData.map((data) => (
