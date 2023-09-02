@@ -129,7 +129,7 @@ export default function Home() {
           <h2 className="text-4xl font-bold text-center py-3 my-3">
             Latest News!!
           </h2>
-          <ul className="text-justify list-disc pl-1 flex flex-col gap-10 mt-10">
+          <ul className="text-justify list-disc pl-1 flex flex-col gap-5 mt-10">
             {latestData.map((data) => (
               <li className="flex flex-col gap-2">
                 <span className="text-xl font-bold">{data.title}</span>

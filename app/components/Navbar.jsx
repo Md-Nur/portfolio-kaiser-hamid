@@ -70,13 +70,13 @@ function Navbar() {
                 className={`absolute w-28 text-center ${dropdownDisplay} mt-2 space-y-2 rounded bg-color3 dark:bg-color2  group-hover:block`}
               >
                 <Link
-                  href="#"
+                  href="./research-experience"
                   className="block hover:bg-color4 dark:hover:bg-color1 rounded p-2"
                 >
                   Research Experience
                 </Link>
                 <Link
-                  href="#"
+                  href="./professional-experience"
                   className="block hover:bg-color4 dark:hover:bg-color1 rounded p-2"
                 >
                   Professional Experience
@@ -84,7 +84,7 @@ function Navbar() {
               </div>
             </li>
             <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-              <Link className="hover:underline" href="teaching.html">
+              <Link className="hover:underline" href="./teaching">
                 Teaching
               </Link>
             </li>
@@ -140,7 +140,7 @@ function Navbar() {
 
           <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
             <Link
-              href="#"
+              href="./research-experience"
               className=""
             >
               Research Experience
@@ -148,14 +148,14 @@ function Navbar() {
           </li>
           <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
             <Link
-              href="#"
+              href="./professional-experience"
               className=""
             >
               Professional Experience
             </Link>
           </li>
           <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md">
-            <Link className="nav-link" href="teaching.html">
+            <Link className="nav-link" href="./teaching">
               Teaching
             </Link>
           </li>
