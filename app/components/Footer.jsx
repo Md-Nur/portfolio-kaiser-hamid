@@ -16,7 +16,7 @@ const Footer = () => {
           <ImLocation2
           className="-mr-1 h-5 w-5 text-color1 dark:text-color4"
           />
-          Pallabi, Mirpur-12, Dhaka-1216
+          Ahsanullah hall, BUET
         </address>
 
         <a

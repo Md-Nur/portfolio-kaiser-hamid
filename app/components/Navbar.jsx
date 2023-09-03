@@ -37,7 +37,7 @@ function Navbar() {
 
   return (
     <header className=" bg-color3 dark:bg-color2 text-color1 dark:text-color4">
-      <nav className="fixed w-screen flex justify-evenly  bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
+      <nav className="fixed z-40 w-screen flex justify-evenly  bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
         <div className="text-lg font-bold">Kaiser</div>
 
         <div className="w-full text-sm font-bold hidden md:block max-w-[1000px]">
@@ -119,7 +119,7 @@ function Navbar() {
       </nav>
       <div className="h-16">{/* buffer space */}</div>
       <div
-        className={`w-full fixed bg-color3 dark:bg-color2 text-color1 dark:text-color4  bg-opacity-80 dark:bg-opacity-80 ${menuDisplay} md:hidden`}
+        className={`w-full fixed z-40 bg-color3 dark:bg-color2 text-color1 dark:text-color4  bg-opacity-80 dark:bg-opacity-80 ${menuDisplay} md:hidden`}
       >
         <ul className="text-center">
           <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md" id="home">

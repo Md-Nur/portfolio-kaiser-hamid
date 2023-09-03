@@ -42,7 +42,7 @@ export default function Home() {
         className="flex flex-wrap px-3 justify-around bg-gradient-to-b from-color3 to-color4 dark:from-color2 dark:to-color1 text-color1 dark:text-color4 items-center py-10"
       >
         <div className="pb-20 flex flex-col items-center gap-3">
-          <h1 className="text-3xl sm:text-5xl font-bold">Kaiser Hamid</h1>
+          <h1 className="text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-color1 to-red-700 dark:from-color4 dark:to-red-300">Kaiser Hamid</h1>
           <em className="text-sm sm:text-2xl">
             Final year undergrad student at{" "}
             <a href="https://www.buet.ac.bd/web/" className=" " target="_blank">
@@ -95,7 +95,7 @@ export default function Home() {
             alt="Picture of the author"
             width={500}
             height={500}
-            className="pt-3 shadow-xl shadow-color2 dark:shadow-color3 rounded-full"
+            className="shadow-xl shadow-color2 dark:shadow-color3 rounded-full"
           />
         </div>
       </section>
