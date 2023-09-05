@@ -1,8 +1,11 @@
-const Avatar = ({ img, alt }) => (
-  <div className="flex items-center justify-center">
-    <div className="flex-shrink-0">
-      <img className="h-20 w-20 rounded-full" src={img} alt={alt} />
-    </div>
-  </div>
+import Image from "next/image";
+const Avatar = ({ width, height, shadowSize }) => (
+    <Image
+      src="/hero.png"
+      alt="Hero"
+      width={width}
+      height={height}
+      className={`${shadowSize} shadow-color2 dark:shadow-color3 rounded-full`}
+    />
 );
 export default Avatar;

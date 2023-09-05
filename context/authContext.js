@@ -2,7 +2,9 @@ import { createContext } from "react";
 
 const AuthContext = createContext({
   authStatus: false,
-  setAuthStatus: () => {},
+  setAuthStatus: () => {
+
+  },
 });
 
 export const AuthProvider = AuthContext.Provider;

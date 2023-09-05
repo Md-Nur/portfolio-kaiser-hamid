@@ -1,13 +1,12 @@
 "use client";
 import appwriteService from "@/appwrite/config.js";
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
-import Link from "next/link";
-import useAuth from "../context/useAuth";
+import useAuth from "@/context/useAuth";
+import { useState } from "react";
 
 const Login = () => {
   const router = useRouter();
-  const { setAuthState } = useAuth();
+  const { setAuthStatus } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -18,8 +17,8 @@ const Login = () => {
     try {
       const session = await appwriteService.login(formData.email, formData.password);
       if (session) {
-        setAuthState(session);
-        router.push("/profile");
+        setAuthStatus(true);
+        router.push("/admin/profile");
       }
     } catch (error) {
       setError(error.message);
@@ -28,7 +27,9 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center w-full my-16">
-      <div className={`mx-auto w-full max-w-lg bg-color3 dark:bg-color2 rounded-xl p-10`}>
+      <div
+        className={`mx-auto w-full max-w-lg bg-color3 dark:bg-color2 rounded-xl p-10`}
+      >
         <div className="mb-2 flex justify-center">
           <span className="inline-block w-full max-w-[60px]">
             <img src="/favicon.ico" alt="Logo" />
@@ -41,10 +42,7 @@ const Login = () => {
         <form onSubmit={login} className="mt-8">
           <div className="space-y-5">
             <div>
-              <label
-                htmlFor="email"
-                className="text-base font-medium "
-              >
+              <label htmlFor="email" className="text-base font-medium ">
                 Email address
               </label>
               <div className="mt-2">
@@ -63,10 +61,7 @@ const Login = () => {
             </div>
             <div>
               <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="text-base font-medium"
-                >
+                <label htmlFor="password" className="text-base font-medium">
                   Password
                 </label>
               </div>

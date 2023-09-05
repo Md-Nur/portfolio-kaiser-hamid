@@ -1,9 +1,8 @@
 "use client";
 import appwriteService from "@/appwrite/config";
-import Login from "@/components/Login";
-import ProfileCard from "@/components/profileCard";
+import Loader from "@/components/Loader";
 import { AuthProvider } from "@/context/authContext";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ProtectedLayout = ({ children }) => {
   const [authStatus, setAuthStatus] = useState(false);
@@ -18,9 +17,15 @@ const ProtectedLayout = ({ children }) => {
 
   return (
     <AuthProvider value={{ authStatus, setAuthStatus }}>
-      
-      {!loader && (<main className="p-3 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw]">{children}</main>)}
+      {loader ? (
+        <Loader />
+      ) : (
+        <main className="m-3 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw]">
+          {children}
+        </main>
+      )}
     </AuthProvider>
   );
 };
+
 export default ProtectedLayout;

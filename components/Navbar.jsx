@@ -5,11 +5,12 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Image from "next/image";
 import useAuth from "@/context/useAuth";
+import {BiSolidUser} from "react-icons/bi"
 
 const navLinks = [
   {
     name: "Home",
-    link: "./",
+    link: "/",
   },
   {
     name: "Education",
@@ -85,8 +86,6 @@ function Navbar() {
     }
   };
 
-  const { authStatus } = useAuth();
-
   return (
     <header className=" bg-color3 dark:bg-color2 text-color1 dark:text-color4">
       <nav className="fixed z-40 w-screen flex justify-evenly bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
@@ -97,7 +96,10 @@ function Navbar() {
             {navLinks.map((link, key) => {
               if (link.dropDown) {
                 return (
-                  <li className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md dropdown">
+                  <li
+                    id={key}
+                    className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md dropdown"
+                  >
                     <button
                       className="flex focus:underline"
                       onClick={handleDropdown}
@@ -142,37 +144,34 @@ function Navbar() {
             })}
           </ul>
         </div>
-        <div className="flex gap-2 items-center">
-          <Image src={modePic} alt="Mode" onClick={handleMode} width={20} height={20} />
+        <div className="flex justify-around w-full max-w-[100px] sm:max-w-xs lg:w-auto lg:gap-5 items-center">
+          <Image
+            src={modePic}
+            alt="Mode"
+            onClick={handleMode}
+            width={20}
+            height={20}
+          />
           <Link
-            href={authStatus ? "/logout" : "/admin"}
-            className="rounded-md border border-color1 dark:border-color4 p-2 text-sm font-semibold hover:text-color4 hover:bg-color1 dark:hover:bg-color4 dark:hover:text-color1"
+            href="/admin/profile" 
+            className="rounded-md border border-color1 dark:border-color4 p-2 font-semibold hover:text-color4 hover:bg-color1 dark:hover:bg-color4 dark:hover:text-color1"
           >
-            {authStatus ? "Logout" : "Log In"}
+            <BiSolidUser /> 
           </Link>
         </div>
-        {/* <div className="">
-                    <Link
-                        href={authStatus ? "/profile" : "/signup"}
-                        className="rounded-md bg-transparent px-3 py-2 text-sm font-semibold text-primary hover:bg-primary/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                    >
-                        {authStatus ? "Profile" : "Sign up"}
-                    </Link>
-                    
-                </div> */}
-        <div className="lg:hidden">
-          <GiHamburgerMenu className="h-6 w-6" onClick={handleMenu} />
+        <div className="lg:hidden" onClick={handleMenu}>
+          <GiHamburgerMenu className="h-6 w-6"  />
         </div>
       </nav>
       <div className="h-16">{/* buffer space */}</div>
       <div
-        className={`w-full fixed z-40 bg-color3 dark:bg-color2 text-color1 dark:text-color4  bg-opacity-80 dark:bg-opacity-80 ${menuDisplay} md:hidden`}
+        className={`w-full fixed z-40 bg-color3 dark:bg-color2 text-color1 dark:text-color4  bg-opacity-80 dark:bg-opacity-80 ${menuDisplay} lg:hidden`}
       >
         <ul className="text-center">
           {navLinks.map((link, key) => {
             if (link.dropDown) {
               return (
-                <li className="">
+                <li className="" id={key}>
                   {link.subLinks.map((subLink, key) => (
                     <Link
                       className="hover:underline hover:bg-color4 dark:hover:bg-color1 block"

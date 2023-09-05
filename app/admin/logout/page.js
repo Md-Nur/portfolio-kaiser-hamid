@@ -4,6 +4,7 @@ import useAuth from "@/context/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import appwriteService from "@/appwrite/config";
+import Loader from "@/components/Loader";
 
 const LogoutPage = () => {
   const router = useRouter();
@@ -12,10 +13,10 @@ const LogoutPage = () => {
   useEffect(() => {
     appwriteService.logout().then(() => {
       setAuthStatus(false);
-      router.replace("/login");
+      router.replace("/admin/login");
     });
   }, []);
 
-  return <></>;
+  return <Loader/>;
 };
 export default LogoutPage;

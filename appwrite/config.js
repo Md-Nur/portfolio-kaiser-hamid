@@ -10,6 +10,7 @@ export const account = new Account(appwriteClient);
 export class AppwriteService {
   async login(email, password) {
     try {
+      console.log("Login success");
       return await account.createEmailSession(email, password);
     } catch (e) {
       throw e;
@@ -28,15 +29,32 @@ export class AppwriteService {
     try {
       return await account.get();
     } catch (e) {
-     console.log("Get current user error", e);
+      console.log("Get current user error", e);
     }
   }
 
   async logout() {
     try {
+      console.log("Logout success");
       return await account.deleteSession("current");
     } catch (e) {
       console.log("Logout error", e);
+    }
+  }
+  async readData(databaseId, collectionId, documentId) {
+    try {
+      const database = new Databases(appwriteClient);
+      return await database.getDocument(databaseId, collectionId, documentId);
+    } catch (e) {
+      console.log("Read database error", e);
+    }
+  }
+  async updateData(databaseId, collectionId, documentId, data) {
+    try {
+      const database = new Databases(appwriteClient);
+      return await database.updateDocument(databaseId, collectionId, documentId, data);
+    } catch (e) {
+      console.log("Update database error", e);
     }
   }
 }
