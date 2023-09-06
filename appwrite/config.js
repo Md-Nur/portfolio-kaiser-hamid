@@ -52,9 +52,38 @@ export class AppwriteService {
   async updateData(databaseId, collectionId, documentId, data) {
     try {
       const database = new Databases(appwriteClient);
-      return await database.updateDocument(databaseId, collectionId, documentId, data);
+      return await database.updateDocument(
+        databaseId,
+        collectionId,
+        documentId,
+        data
+      );
     } catch (e) {
-      console.log("Update database error", e);
+      return "Update database error", e;
+    }
+  }
+
+  async createData(databaseId, collectionId, data) {
+    try {
+      const database = new Databases(appwriteClient);
+      return await database.createDocument(
+        databaseId,
+        collectionId,
+        ID.unique(),
+        data
+      );
+    } catch (e) {
+      throw e;
+    }
+  }
+
+
+  async getAllData(databaseId, collectionId) {
+    try {
+      const database = new Databases(appwriteClient);
+      return await database.listDocuments(databaseId, collectionId);
+    } catch (e) {
+      throw e;
     }
   }
 }

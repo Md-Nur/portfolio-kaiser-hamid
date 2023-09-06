@@ -2,33 +2,37 @@
 import ProfileCard from "@/components/profileCard";
 import appwriteService from "@/appwrite/config";
 import { useState } from "react";
-
-let databaseId = "64f798cc47419119ff83";
-let collectionId = "64f798f22a16191eda71";
-let documentId = "64f79a9a675c6fddd8f2";
+import LatestNews from "@/components/forms/LatestNews";
 
 const ProfilePage = () => {
   const [data, setData] = useState({
     about_me: "",
   });
   const upadateAboutMe = async (e) => {
+    let databaseId = "64f798cc47419119ff83";
+    let collectionId = "64f798f22a16191eda71";
+    let documentId = "64f79a9a675c6fddd8f2";
+
     e.preventDefault();
     try {
-      await appwriteService.updateData(
-        databaseId,
-        collectionId,
-        documentId,
-        data
-      ).then((res) => {
-        window.location.reload();
-      }).then(() => {
-        alert("About Me Updated");
-      });
+      await appwriteService
+        .updateData(databaseId, collectionId, documentId, data)
+        .then((res) => {
+          setData({
+            about_me: "",
+          });
+          document.getElementById("about_me").value = "";
+        })
+        .then(() => {
+          alert("About Me Updated");
+        });
     } catch (error) {
       console.log(error.message);
     }
   };
 
+
+  
   return (
     <div>
       <ProfileCard />
@@ -44,12 +48,12 @@ const ProfilePage = () => {
                 <textarea
                   className="flex h-44 w-full rounded-md px-3 py-2 text-sm"
                   type="text"
+                  id="about_me"
                   value={data.about_me}
                   onChange={(e) =>
                     setData((prev) => ({ ...prev, about_me: e.target.value }))
                   }
                   placeholder="About Me. Update your about me section here. then click update. It will be replaced with the current text."
-                  id="about_me"
                   required
                 />
               </div>
@@ -64,6 +68,8 @@ const ProfilePage = () => {
           </div>
         </form>
       </div>
+
+     <LatestNews />
     </div>
   );
 };
