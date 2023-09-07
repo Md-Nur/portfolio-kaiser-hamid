@@ -28,9 +28,9 @@ let educationData = [
 const page = () => {
   return (
     <MainContainer>
-      <section id="education" className="py-10 my-10">
-        <h2 className="text-4xl font-bold text-center py-3 my-3">Education</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <section id="education" className="py-5 my-5">
+        <h2 className="text-4xl font-bold text-center my-3">Education</h2>
+        <div className="flex flex-wrap gap-5">
           {educationData.map((data, index) => (
             <Card
               key={index}

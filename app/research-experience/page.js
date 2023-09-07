@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MainContainer from "@/components/basic/MainContainer";
+import Card from "@/components/basic/Card";
 
 let researchData = [
   {
@@ -156,8 +157,9 @@ const page = () => {
       </h2>
       <div className="text-justify pl-1 flex flex-col gap-10 mt-10">
         {researchData.map((data) => (
-          <div className="flex justify-between items-baseline mb-20 flex-wrap">
-            <span className="text-xl font-bold">{data.title}</span>
+          <Card>
+          <div className="flex justify-between items-baseline flex-wrap">
+            <span className="text-2xl font-bold">{data.title}</span>
             <span className=" ">
               <em>({data.duration})</em>
             </span>
@@ -245,6 +247,7 @@ const page = () => {
               </span>
             ) : null}
           </div>
+          </Card>
         ))}
       </div>
     </MainContainer>

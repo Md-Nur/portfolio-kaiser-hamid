@@ -45,22 +45,24 @@ const page = () => {
           ))}
         </div>
         <h2 className="text-3xl mt-20 font-bold">Technical Skills</h2>
-        <div className="flex flex-wrap justify-center items-center w-full mt-5">
+        <div className="flex flex-wrap gap-5 justify-center items-center w-full my-5">
           {Object.keys(skillData[1]).map((skill, index) => (
-            <Card key={index}>
-              <div className="flex flex-col items-center justify-center min-h-[200px]">
-                <h1 className="text-xl font-bold text-center md:text-lg lg:text-xl">
-                  {skill}
-                </h1>
-                <ul className="list-disc w-full px-5 mt-5">
-                  {skillData[1][skill].map((skill, index) => (
-                    <div key={index}>
-                      <li className="">{skill}</li>
-                    </div>
-                  ))}
-                </ul>
-              </div>
-            </Card>
+            <div key={index} className="max-w-250px">
+              <Card key={index}>
+                <div className="flex flex-col items-center justify-center min-h-[200px]">
+                  <h1 className="text-xl font-bold text-center md:text-lg lg:text-xl">
+                    {skill}
+                  </h1>
+                  <ul className="list-disc w-full px-3 mt-5">
+                    {skillData[1][skill].map((skill, index) => (
+                      <div key={index}>
+                        <li className="">{skill}</li>
+                      </div>
+                    ))}
+                  </ul>
+                </div>
+              </Card>
+            </div>
           ))}
         </div>
         <h2 className="text-3xl mt-20 font-bold">Language Skills</h2>

@@ -1,3 +1,4 @@
+import Card from "@/components/basic/Card";
 import MainContainer from "@/components/basic/MainContainer";
 
 let professionalData = [
@@ -32,17 +33,21 @@ const page = () => {
         </h1>
         <div className="flex flex-col gap-3">
           {professionalData.map((data, index) => (
-            <div
-              key={index}
-              className="flex flex-wrap my-5 justify-between gap-3"
-            >
-              <h2 className="text-2xl sm:text-4xl font-bold">{data.title}</h2>
-              <span className="text-sm px-5 sm:text-lg  ">{data.date}</span>
-              <span className="text-sm px-5 sm:text-lg">
-                {data.description}
-              </span>
-              <span className="text-sm px-5 sm:text-lg  ">{data.company}</span>
-            </div>
+            <Card>
+              <div
+                key={index}
+                className="flex flex-wrap my-5 justify-between gap-3"
+              >
+                <h2 className="text-2xl sm:text-4xl font-bold">{data.title}</h2>
+                <span className="text-sm px-5 sm:text-lg  ">{data.date}</span>
+                <span className="text-sm px-5 sm:text-lg">
+                  {data.description}
+                </span>
+                <span className="text-sm px-5 sm:text-lg  ">
+                  {data.company}
+                </span>
+              </div>
+            </Card>
           ))}
         </div>
       </div>

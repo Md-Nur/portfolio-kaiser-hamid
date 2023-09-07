@@ -1,3 +1,4 @@
+import Card from "@/components/basic/Card";
 import MainContainer from "@/components/basic/MainContainer";
 let publicationData = [
   {
@@ -26,11 +27,10 @@ const page = () => {
   return (
     <MainContainer>
       <h2 className="text-3xl font-bold text-center py-5 my-5">Publications</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-5 my-5">
+      <div className="flex flex-wrap gap-4 py-5 my-6">
         {publicationData.map((publication) => (
-          <div
+          <Card
             key={publication.id}
-            className="dark:bg-color3 text-color4 dark:text-color1 bg-color2 shadow-md rounded-md p-4 py-5 my-5"
           >
             <h3 className="text-xl font-bold">{publication.title}</h3>
             <p className="text-sm">{publication.description}</p>
@@ -42,7 +42,7 @@ const page = () => {
             >
               Read More
             </a>
-          </div>
+          </Card>
         ))}
       </div>
     </MainContainer>

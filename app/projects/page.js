@@ -1,3 +1,4 @@
+import Card from "@/components/basic/Card";
 import MainContainer from "@/components/basic/MainContainer";
 
 
@@ -106,8 +107,9 @@ const page = () => {
       </h2>
       <div className="text-justify items-center justify-center pl-1 flex flex-col gap-10 mt-10">
         {projectData.map((data) => (
-          <div className="flex justify-between items-center mb-20 flex-wrap">
-            <div className="text-xl font-bold">{data.title}</div>
+         <Card>
+          <div className="flex justify-between items-center flex-wrap">
+            <div className="text-3xl font-bold">{data.title}</div>
             <div className=" ">
               <em>({data.duration})</em>
             </div>
@@ -147,6 +149,7 @@ const page = () => {
               </div>
             ) : null}
           </div>
+          </Card>
         ))}
       </div>
     </MainContainer>

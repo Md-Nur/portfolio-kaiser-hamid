@@ -1,4 +1,5 @@
 import MainContainer from "@/components/basic/MainContainer";
+import Card from "@/components/basic/Card";
 let teachingData = [
   {
     title: "Data Structures and Algorithms",
@@ -25,27 +26,24 @@ let teachingData = [
 const page = () => {
   return (
     <MainContainer>
-      <div className="py-20 flex flex-col items-center gap-3">
-        <h1 className="text-3xl sm:text-5xl font-bold my-5">
+      <div className="py-10 flex flex-col items-center gap-3">
+        <h1 className="text-3xl sm:text-4xl font-bold my-5">
           Teaching Experience
         </h1>
         <div className="flex flex-col gap-3">
-          {teachingData.map((data, index) => (
-            <div
-              key={index}
-              className="flex flex-wrap my-5 justify-between gap-3"
-            >
-              <h2 className="text-2xl sm:text-4xl font-bold">{data.title}</h2>
-              <span className="text-sm px-5 sm:text-lg  ">
-                {data.date}
-              </span>
-              <span className="text-sm px-5 sm:text-lg">
-                {data.description}
-              </span>
-              <span className="text-sm px-5 sm:text-lg  ">
-                {data.company}
-              </span>
-            </div>
+          {teachingData.map((data) => (
+            <Card key={data}>
+              <div className="flex flex-wrap my-5 justify-between gap-3">
+                <h2 className="text-2xl sm:text-3xl font-bold">{data.title}</h2>
+                <span className="text-sm px-5 sm:text-lg  ">{data.date}</span>
+                <span className="text-sm px-5 sm:text-lg">
+                  {data.description}
+                </span>
+                <span className="text-sm px-5 sm:text-lg  ">
+                  {data.company}
+                </span>
+              </div>
+            </Card>
           ))}
         </div>
       </div>
