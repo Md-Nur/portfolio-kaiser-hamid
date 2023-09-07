@@ -1,5 +1,5 @@
 import Link from "next/link";
-import MainContainer from "../../components/MainContainer";
+import MainContainer from "@/components/basic/MainContainer";
 
 let researchData = [
   {

@@ -1,4 +1,4 @@
-import  MainContainer from "@/components/basic/MainContainer";
+import MainContainer from "@/components/basic/MainContainer";
 import { GiTrophy } from "react-icons/gi";
 
 let achievementData = {

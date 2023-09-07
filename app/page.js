@@ -3,6 +3,7 @@ import LatestNews from "@/components/LatestNews";
 import Hero from "@/components/Hero";
 import appwriteService from "@/appwrite/config";
 import { useEffect, useState } from "react";
+import MainContainer from "@/components/basic/MainContainer";
 
 
 
@@ -24,14 +25,14 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <main className="m-3 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw]">
+      <MainContainer>
         <section id="about-me" className="py-5 my-10">
           <h2 className="text-4xl font-bold text-center py-3 my-3">About Me</h2>
           <p className="text-justify">{aboutMeData}</p>
         </section>
 
         <LatestNews />
-      </main>
+      </MainContainer>
     </>
   );
 }

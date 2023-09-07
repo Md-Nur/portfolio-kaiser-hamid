@@ -1,4 +1,5 @@
-import MainContainer from "../../components/MainContainer";
+import MainContainer from "@/components/basic/MainContainer";
+
 
 let projectData = [
   {
