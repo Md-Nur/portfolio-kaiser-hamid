@@ -1,4 +1,5 @@
-import Image from "next/image";
+import Card from "@/components/basic/Card";
+import MainContainer from "@/components/basic/MainContainer";
 
 let skillData = [
   [
@@ -26,62 +27,54 @@ let skillData = [
     Software: ["Adobe Photoshop", "Adobe Illustrator", "Adobe XD"],
     Others: ["Sass", "VS Code", "Git"],
   },
-  [
-    "Bangla",
-    "English",
-    "Hindi",
-    "Arabic",
-    "Korean",
-    "Spanish",
-  ],
+  ["Bangla", "English", "Hindi", "Arabic", "Korean", "Spanish"],
 ];
 
 const page = () => {
   return (
-    <section className="m-3 py-10 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw] flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold text-center md:text-4xl lg:text-5xl">
-        Skills
-      </h1>
-      <div className="flex flex-wrap justify-center items-baseline w-full mt-5">
-        {skillData[0].map((skill, index) => (
-          <div key={index}>
-            <img src={skill} alt="skill" className="h-16 m-2" />
-          </div>
-        ))}
-      </div>
+    <MainContainer>
+      <section className="py-10 flex flex-col items-center justify-center">
+        <h1 className="text-3xl font-bold text-center md:text-4xl lg:text-5xl">
+          Skills
+        </h1>
+        <div className="flex flex-wrap justify-center items-baseline w-full mt-5">
+          {skillData[0].map((skill, index) => (
+            <div key={index}>
+              <img src={skill} alt="skill" className="h-16 m-2" />
+            </div>
+          ))}
+        </div>
         <h2 className="text-3xl mt-20 font-bold">Technical Skills</h2>
-      <div className="flex flex-wrap justify-center items-center w-full mt-5">
-        {Object.keys(skillData[1]).map((skill, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center justify-center m-2 text-color4 dark:text-color1 bg-color2 dark:bg-color3 p-3 rounded-lg shadow-color1 dark:shadow-color3 min-h-[200px]"
-          >
-            <h1 className="text-xl font-bold text-center md:text-lg lg:text-xl">
-              {skill}
-            </h1>
-            <ul className="list-disc w-full px-5 mt-5">
-              {skillData[1][skill].map((skill, index) => (
-                <div key={index}>
-                  <li className="">
-                    {skill}
-                  </li>
-                </div>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+        <div className="flex flex-wrap justify-center items-center w-full mt-5">
+          {Object.keys(skillData[1]).map((skill, index) => (
+            <Card key={index}>
+              <div className="flex flex-col items-center justify-center min-h-[200px]">
+                <h1 className="text-xl font-bold text-center md:text-lg lg:text-xl">
+                  {skill}
+                </h1>
+                <ul className="list-disc w-full px-5 mt-5">
+                  {skillData[1][skill].map((skill, index) => (
+                    <div key={index}>
+                      <li className="">{skill}</li>
+                    </div>
+                  ))}
+                </ul>
+              </div>
+            </Card>
+          ))}
+        </div>
         <h2 className="text-3xl mt-20 font-bold">Language Skills</h2>
-      <ul className="w-full my-5 justify-center list-disc flex gap-10 flex-wrap">
-        {skillData[2].map((skill, index) => (
-          <li key={index}>
-            <span className="text-sm font-bold text-center md:text-base lg:text-lg">
-              {skill}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </section>
+        <ul className="w-full my-5 justify-center list-disc flex gap-10 flex-wrap">
+          {skillData[2].map((skill, index) => (
+            <li key={index}>
+              <span className="text-sm font-bold text-center md:text-base lg:text-lg">
+                {skill}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </MainContainer>
   );
 };
 

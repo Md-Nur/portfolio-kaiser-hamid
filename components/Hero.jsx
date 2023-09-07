@@ -13,7 +13,7 @@ const Hero = () => {
       id="hero"
       className="flex flex-wrap px-3 justify-around bg-gradient-to-b from-color3 to-color4 dark:from-color2 dark:to-color1 text-color1 dark:text-color4 items-center py-10"
     >
-      <div className="pb-20 flex flex-col items-center gap-3">
+      <div className="py-20 flex flex-col items-center gap-3">
         <h1 className="text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-color1 to-red-700 dark:from-color4 dark:to-red-300">
           Kaiser Hamid
         </h1>
@@ -64,7 +64,7 @@ const Hero = () => {
         </div>
       </div>
       <div className="">
-        <Avatar width={500} height={500} shadowSize="shadow-xl" />
+        <Avatar width={350} height={350} shadowSize="shadow-lg" />
       </div>
     </section>
   );

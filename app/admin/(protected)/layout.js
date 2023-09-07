@@ -11,6 +11,6 @@ const ProtectedLayout = ({ children }) => {
     return router.replace("/admin/login");
   }
 
-  return children;
+  return  children ;
 };
 export default ProtectedLayout;

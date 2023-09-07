@@ -1,3 +1,4 @@
+import MainContainer from "@/components/basic/MainContainer";
 import { SiTodoist } from "react-icons/si";
 
 let activitesData = {
@@ -28,7 +29,8 @@ let activitesData = {
 };
 const page = () => {
   return (
-    <section className="mx-3 py-10 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw] flex flex-col items-center justify-center">
+    <MainContainer>
+    <section className="py-10 flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center w-full">
         <h2 className="text-3xl mt-20 font-bold">
           Extra-Curricular Activities
@@ -59,6 +61,7 @@ const page = () => {
         </ul>
       </div>
     </section>
+    </MainContainer>
   );
 };
 

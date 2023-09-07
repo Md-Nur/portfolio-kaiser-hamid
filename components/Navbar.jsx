@@ -14,11 +14,11 @@ const navLinks = [
   },
   {
     name: "Education",
-    link: "./education",
+    link: "/education",
   },
   {
     name: "Publication",
-    link: "./publication",
+    link: "/publication",
   },
   {
     dropDown: true,
@@ -26,33 +26,33 @@ const navLinks = [
     subLinks: [
       {
         name: "Research Experience",
-        link: "./research-experience",
+        link: "/research-experience",
       },
       {
         name: "Professional Experience",
-        link: "./professional-experience",
+        link: "/professional-experience",
       },
     ],
   },
   {
     name: "Teaching",
-    link: "./teaching",
+    link: "/teaching",
   },
   {
     name: "Skills",
-    link: "./skill",
+    link: "/skill",
   },
   {
     name: "Projects",
-    link: "./projects",
+    link: "/projects",
   },
   {
     name: "Achievements",
-    link: "./achievements",
+    link: "/achievements",
   },
   {
     name: "Activities",
-    link: "./activites",
+    link: "/activites",
   },
 ];
 
@@ -154,7 +154,7 @@ function Navbar() {
           />
           <Link
             href="/admin/profile" 
-            className="rounded-md border border-color1 dark:border-color4 p-2 font-semibold hover:text-color4 hover:bg-color1 dark:hover:bg-color4 dark:hover:text-color1"
+            className="rounded-full border border-color1 dark:border-color4 p-2 font-semibold hover:text-color4 hover:bg-color1 dark:hover:bg-color4 dark:hover:text-color1"
           >
             <BiSolidUser /> 
           </Link>

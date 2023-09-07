@@ -1,4 +1,4 @@
-import Link from "next/link";
+import MainContainer from "../../components/MainContainer";
 
 let projectData = [
   {
@@ -99,7 +99,7 @@ let projectData = [
 ];
 const page = () => {
   return (
-    <section className="m-3 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw]">
+    <MainContainer>
       <h2 className="text-4xl font-bold text-center py-3 my-3">
         Projects
       </h2>
@@ -148,7 +148,7 @@ const page = () => {
           </div>
         ))}
       </div>
-    </section>
+    </MainContainer>
   );
 };
 

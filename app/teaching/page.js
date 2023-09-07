@@ -1,5 +1,4 @@
-import React from "react";
-
+import MainContainer from "@/components/basic/MainContainer";
 let teachingData = [
   {
     title: "Data Structures and Algorithms",
@@ -25,10 +24,7 @@ let teachingData = [
 ];
 const page = () => {
   return (
-    <section
-      id="teaching"
-      className="m-3 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw]"
-    >
+    <MainContainer>
       <div className="py-20 flex flex-col items-center gap-3">
         <h1 className="text-3xl sm:text-5xl font-bold my-5">
           Teaching Experience
@@ -53,7 +49,7 @@ const page = () => {
           ))}
         </div>
       </div>
-    </section>
+    </MainContainer>
   );
 };
 

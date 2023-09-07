@@ -4,7 +4,7 @@ import useAuth from "@/context/useAuth";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import appwriteService from "@/appwrite/config";
-import Loader from "@/components/Loader";
+import Loader from "@/components/basic/Loader";
 
 const LogoutPage = () => {
   const router = useRouter();

@@ -1,4 +1,4 @@
-import React from "react";
+import MainContainer from "@/components/basic/MainContainer";
 
 let professionalData = [
   {
@@ -25,26 +25,28 @@ let professionalData = [
 ];
 const page = () => {
   return (
-    <section
-      id="professional-experience"
-      className="m-3 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw]"
-    >
+    <MainContainer>
       <div className="py-20 flex flex-col items-center gap-3">
         <h1 className="text-3xl sm:text-5xl font-bold my-5">
           Professional Experience
         </h1>
         <div className="flex flex-col gap-3">
           {professionalData.map((data, index) => (
-            <div key={index} className="flex flex-wrap my-5 justify-between gap-3">
+            <div
+              key={index}
+              className="flex flex-wrap my-5 justify-between gap-3"
+            >
               <h2 className="text-2xl sm:text-4xl font-bold">{data.title}</h2>
               <span className="text-sm px-5 sm:text-lg  ">{data.date}</span>
-              <span className="text-sm px-5 sm:text-lg">{data.description}</span>
+              <span className="text-sm px-5 sm:text-lg">
+                {data.description}
+              </span>
               <span className="text-sm px-5 sm:text-lg  ">{data.company}</span>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </MainContainer>
   );
 };
 

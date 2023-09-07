@@ -1,3 +1,4 @@
+import  MainContainer from "@/components/basic/MainContainer";
 import { GiTrophy } from "react-icons/gi";
 
 let achievementData = {
@@ -64,72 +65,74 @@ let achievementData = {
 };
 const page = () => {
   return (
-    <section className="mx-3 py-10 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw] flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center w-full">
-        <h2 className="text-3xl mt-20 font-bold">Achievements & Awards</h2>
-        <div className="flex flex-col justify-center w-full mt-5">
-          {achievementData.awards.map((award, index) => (
-            <div
-              key={index}
-              className="flex flex-wrap items-baseline gap-1 m-2"
-            >
-              <GiTrophy />
-              <h3 className="text-xl font-bold md:text-lg lg:text-xl">
-                [{award.date}]
-              </h3>
-              <p className="text-sm px-5 md:text-base lg:text-lg">
-                {award.descption}
-              </p>
-              {award.youtubeLink ? (
-                <a
-                  href={award.youtubeLink}
-                  target="_blank"
-                  className="text-sm text-center md:text-base lg:text-lg   hover:underline"
-                >
-                  [Youtube Link]
-                </a>
-              ) : null}
-              {award.posterLink ? (
-                <a
-                  href={award.posterLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-center md:text-base lg:text-lg   hover:underline"
-                >
-                  [Poster Link]
-                </a>
-              ) : null}
-            </div>
-          ))}
-        </div>
-        <h2 className="text-3xl mt-20 font-bold">Certifications</h2>
-        <div className="flex flex-col w-full mt-5">
-          {achievementData.certifications.map((certification, index) => (
-            <div
-            key={index}
-            className="flex flex-wrap items-baseline gap-1 m-2"
-          >
-            <GiTrophy />
-            <h3 className="text-xl font-bold md:text-lg lg:text-xl">
-              [{certification.date}]
-            </h3>
-            <p className="text-sm px-5 md:text-base lg:text-lg">
-              {certification.descption}
-            </p>
-            {certification.youtubeLink ? (
-              <a
-                href={certification.youtubeLink}
-                target="_blank"
-                className="text-sm text-center md:text-base lg:text-lg   hover:underline"
+    <MainContainer>
+      <section className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center w-full">
+          <h2 className="text-3xl mt-20 font-bold">Achievements & Awards</h2>
+          <div className="flex flex-col justify-center w-full mt-5">
+            {achievementData.awards.map((award, index) => (
+              <div
+                key={index}
+                className="flex flex-wrap items-baseline gap-1 m-2"
               >
-                [Youtube Link]
-              </a>
-            ) : null}
+                <GiTrophy />
+                <h3 className="text-xl font-bold md:text-lg lg:text-xl">
+                  [{award.date}]
+                </h3>
+                <p className="text-sm px-5 md:text-base lg:text-lg">
+                  {award.descption}
+                </p>
+                {award.youtubeLink ? (
+                  <a
+                    href={award.youtubeLink}
+                    target="_blank"
+                    className="text-sm text-center md:text-base lg:text-lg   hover:underline"
+                  >
+                    [Youtube Link]
+                  </a>
+                ) : null}
+                {award.posterLink ? (
+                  <a
+                    href={award.posterLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-center md:text-base lg:text-lg   hover:underline"
+                  >
+                    [Poster Link]
+                  </a>
+                ) : null}
+              </div>
+            ))}
           </div>
-          ))}
+          <h2 className="text-3xl mt-20 font-bold">Certifications</h2>
+          <div className="flex flex-col w-full mt-5">
+            {achievementData.certifications.map((certification, index) => (
+              <div
+                key={index}
+                className="flex flex-wrap items-baseline gap-1 m-2"
+              >
+                <GiTrophy />
+                <h3 className="text-xl font-bold md:text-lg lg:text-xl">
+                  [{certification.date}]
+                </h3>
+                <p className="text-sm px-5 md:text-base lg:text-lg">
+                  {certification.descption}
+                </p>
+                {certification.youtubeLink ? (
+                  <a
+                    href={certification.youtubeLink}
+                    target="_blank"
+                    className="text-sm text-center md:text-base lg:text-lg   hover:underline"
+                  >
+                    [Youtube Link]
+                  </a>
+                ) : null}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </MainContainer>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import appwriteService from "@/appwrite/config";
+import Button from "../basic/Button";
 
 const LatestNews = () => {
   const [latestNews, setLatestNews] = useState({
@@ -54,7 +55,7 @@ const LatestNews = () => {
           <div>
             <div className="mt-2 space-y-5">
               <input
-                className="flex h-10 w-full rounded-md px-3 py-2 text-sm"
+                className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                 type="text"
                 id="title"
                 value={latestNews.title}
@@ -69,7 +70,7 @@ const LatestNews = () => {
               />
 
               <input
-                className="flex h-10 w-full rounded-md px-3 py-2 text-sm"
+                className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                 type="text"
                 id="date"
                 value={latestNews.date}
@@ -80,7 +81,7 @@ const LatestNews = () => {
               />
 
               <input
-                className="flex h-10 w-full rounded-md px-3 py-2 text-sm"
+                className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                 type="text"
                 id="linksTitle"
                 value={latestNews.linksTitle}
@@ -94,7 +95,7 @@ const LatestNews = () => {
               />
 
               <input
-                className="flex h-10 w-full rounded-md px-3 py-2 text-sm"
+                className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                 type="text"
                 id="linksUrl"
                 value={latestNews.linksUrl}
@@ -109,22 +110,9 @@ const LatestNews = () => {
             </div>
 
             <div className="flex items-center flex-wrap justify-evenly space-x-3">
-              <input
-                className="rounded-md text-color4 bg-color2 dark:text-color1 dark:bg-color3 p-3 mt-3"
-                type="submit"
-                value="Add"
-              />
-
-              <input
-                className="rounded-md text-color4 bg-color2 dark:text-color1 dark:bg-color3 p-3 mt-3"
-                type="reset"
-                value="Reset"
-              />
-              <input
-                className="rounded-md text-color4 bg-color2 dark:text-color1 dark:bg-color3 p-3 mt-3"
-                type="button"
-                value="View"
-              />
+              <Button type="submit">Add</Button>
+              <Button type="reset"> Clear</Button>
+              <Button>View</Button>
             </div>
           </div>
         </div>

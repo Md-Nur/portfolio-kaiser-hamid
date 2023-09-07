@@ -1,5 +1,4 @@
-import React from "react";
-
+import MainContainer from "@/components/basic/MainContainer";
 let publicationData = [
   {
     id: 1,
@@ -25,7 +24,7 @@ let publicationData = [
 ];
 const page = () => {
   return (
-    <section className="m-3 my-10 py-10 lg:mx-auto md:w-[95vw] lg:w-[90vw] xl:w-[85vw] 2xl:w-[80vw]">
+    <MainContainer>
       <h2 className="text-3xl font-bold text-center py-5 my-5">Publications</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-5 my-5">
         {publicationData.map((publication) => (
@@ -46,7 +45,7 @@ const page = () => {
           </div>
         ))}
       </div>
-    </section>
+    </MainContainer>
   );
 };
 
