@@ -5,7 +5,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Image from "next/image";
 import useAuth from "@/context/useAuth";
-import {BiSolidUser} from "react-icons/bi"
+import { BiSolidUser } from "react-icons/bi";
 
 const navLinks = [
   {
@@ -89,7 +89,9 @@ function Navbar() {
   return (
     <header className=" bg-color3 dark:bg-color2 text-color1 dark:text-color4">
       <nav className="fixed z-40 w-screen flex justify-evenly bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
-        <div className="text-lg font-bold">Kaiser</div>
+        <div className="text-lg font-bold">
+          <Link href="/">Kaiser</Link>
+        </div>
 
         <div className="min-w-[800px] text-sm font-bold hidden lg:block max-w-[1000px]">
           <ul className="flex justify-evenly text-center">
@@ -153,14 +155,14 @@ function Navbar() {
             height={20}
           />
           <Link
-            href="/admin/profile" 
+            href="/admin/profile"
             className="rounded-full border border-color1 dark:border-color4 p-2 font-semibold hover:text-color4 hover:bg-color1 dark:hover:bg-color4 dark:hover:text-color1"
           >
-            <BiSolidUser /> 
+            <BiSolidUser />
           </Link>
         </div>
         <div className="lg:hidden" onClick={handleMenu}>
-          <GiHamburgerMenu className="h-6 w-6"  />
+          <GiHamburgerMenu className="h-6 w-6" />
         </div>
       </nav>
       <div className="h-16">{/* buffer space */}</div>
