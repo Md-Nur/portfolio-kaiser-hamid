@@ -9,7 +9,7 @@ const LoginPage = () => {
   const { authStatus } = useAuth();
 
   if (authStatus) {
-    return Router.replace("/admin/profile");
+    return Router.replace("/profile");
   }
 
   return <Login />;

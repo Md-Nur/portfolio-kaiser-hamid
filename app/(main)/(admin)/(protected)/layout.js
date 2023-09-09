@@ -8,7 +8,7 @@ const ProtectedLayout = ({ children }) => {
   const { authStatus } = useAuth();
 
   if (!authStatus) {
-    return router.replace("/admin/login");
+    return router.replace("/login");
   }
 
   return  children ;

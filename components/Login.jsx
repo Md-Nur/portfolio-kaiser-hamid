@@ -5,7 +5,6 @@ import useAuth from "@/context/useAuth";
 import { useState } from "react";
 import Button from "./basic/Button";
 import Card from "./basic/Card";
-import Avatar from "./Avatar";
 
 const Login = () => {
   const router = useRouter();
@@ -24,7 +23,7 @@ const Login = () => {
       );
       if (session) {
         setAuthStatus(true);
-        router.push("/admin/profile");
+        router.push("/profile");
       }
     } catch (error) {
       setError(error.message);

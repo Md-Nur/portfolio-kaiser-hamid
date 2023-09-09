@@ -48,7 +48,7 @@ const ProfileCard = () => {
           </div>
           <div className="w-full flex justify-center">
             <Button>
-              <Link href={"/admin/logout"}>Logout</Link>
+              <Link href={"/logout"}>Logout</Link>
             </Button>
           </div>
         </div>

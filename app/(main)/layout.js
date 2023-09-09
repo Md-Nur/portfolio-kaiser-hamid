@@ -21,7 +21,13 @@ const ProtectedLayout = ({ children }) => {
   return (
     <AuthProvider value={{ authStatus, setAuthStatus }}>
       <Navbar />
-      {loader ?<MainContainer><Loader /></MainContainer>  : children}
+      {loader ? (
+        <MainContainer>
+          <Loader />
+        </MainContainer>
+      ) : (
+        children
+      )}
       <Footer />
     </AuthProvider>
   );

@@ -12,8 +12,9 @@ const LogoutPage = () => {
 
   useEffect(() => {
     appwriteService.logout().then(() => {
-      setAuthStatus(false);
-      router.replace("/admin/login");
+      setAuthStatus(false);      
+      // router.replace("/login");
+      router.push("/")
     });
   }, []);
 

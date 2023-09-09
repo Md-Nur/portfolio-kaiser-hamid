@@ -5,6 +5,9 @@ const appwriteClient = new Client()
   .setEndpoint(conf.appwriteUrl)
   .setProject(conf.appwriteProjectId);
 
+
+const databaseId = conf.appwriteDatabaseId;
+
 export const account = new Account(appwriteClient);
 
 export class AppwriteService {
@@ -41,7 +44,7 @@ export class AppwriteService {
       console.log("Logout error", e);
     }
   }
-  async readData(databaseId, collectionId, documentId) {
+  async readData(collectionId, documentId) {
     try {
       const database = new Databases(appwriteClient);
       return await database.getDocument(databaseId, collectionId, documentId);
@@ -49,7 +52,7 @@ export class AppwriteService {
       console.log("Read database error", e);
     }
   }
-  async updateData(databaseId, collectionId, documentId, data) {
+  async updateData(collectionId, documentId, data) {
     try {
       const database = new Databases(appwriteClient);
       return await database.updateDocument(
@@ -63,7 +66,7 @@ export class AppwriteService {
     }
   }
 
-  async createData(databaseId, collectionId, data) {
+  async createData(collectionId, data) {
     try {
       const database = new Databases(appwriteClient);
       return await database.createDocument(
@@ -78,10 +81,23 @@ export class AppwriteService {
   }
 
 
-  async getAllData(databaseId, collectionId) {
+  async getAllData(collectionId) {
     try {
       const database = new Databases(appwriteClient);
       return await database.listDocuments(databaseId, collectionId);
+    } catch (e) {
+      throw e;
+    }
+  }
+
+  async deleteData(collectionId, documentId) {
+    try {
+      const database = new Databases(appwriteClient);
+      return await database.deleteDocument(
+        databaseId,
+        collectionId,
+        documentId
+      );
     } catch (e) {
       throw e;
     }
