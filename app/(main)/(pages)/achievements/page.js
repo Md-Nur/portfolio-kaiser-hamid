@@ -1,4 +1,3 @@
-import MainContainer from "@/components/basic/MainContainer";
 import { GiTrophy } from "react-icons/gi";
 
 let achievementData = {
@@ -65,7 +64,6 @@ let achievementData = {
 };
 const page = () => {
   return (
-    <MainContainer>
       <section className="flex flex-col items-center justify-center">
         <div className="flex flex-col items-center justify-center w-full">
           <h2 className="text-3xl mt-20 font-bold">Achievements & Awards</h2>
@@ -132,7 +130,6 @@ const page = () => {
           </div>
         </div>
       </section>
-    </MainContainer>
   );
 };
 

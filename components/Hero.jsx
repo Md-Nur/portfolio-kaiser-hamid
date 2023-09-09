@@ -1,4 +1,4 @@
-import { EnvelopeIcon } from "@heroicons/react/20/solid";
+import { HiMail } from "react-icons/hi";
 import {
   FaFacebook,
   FaTwitter,
@@ -30,7 +30,7 @@ const Hero = () => {
           href="mailto:kaiserhamid715@gmail.com"
           className="flex gap-3 items-center text-sm sm:text-xl"
         >
-          <EnvelopeIcon
+          <HiMail
             className="-mr-1 h-6 w-6 text-color2 dark:text-color4"
             aria-hidden="true"
           />

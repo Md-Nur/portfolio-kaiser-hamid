@@ -1,5 +1,4 @@
 import Card from "@/components/basic/Card";
-import MainContainer from "@/components/basic/MainContainer";
 
 let professionalData = [
   {
@@ -26,9 +25,8 @@ let professionalData = [
 ];
 const page = () => {
   return (
-    <MainContainer>
       <div className="py-20 flex flex-col items-center gap-3">
-        <h1 className="text-3xl sm:text-5xl font-bold my-5">
+        <h1 className="text-4xl font-bold my-5">
           Professional Experience
         </h1>
         <div className="flex flex-col gap-3">
@@ -38,7 +36,7 @@ const page = () => {
                 key={index}
                 className="flex flex-wrap my-5 justify-between gap-3"
               >
-                <h2 className="text-2xl sm:text-4xl font-bold">{data.title}</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold">{data.title}</h2>
                 <span className="text-sm px-5 sm:text-lg  ">{data.date}</span>
                 <span className="text-sm px-5 sm:text-lg">
                   {data.description}
@@ -51,7 +49,6 @@ const page = () => {
           ))}
         </div>
       </div>
-    </MainContainer>
   );
 };
 

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import MainContainer from "@/components/basic/MainContainer";
 import Card from "@/components/basic/Card";
 
 let researchData = [
@@ -151,7 +150,7 @@ let researchData = [
 ];
 const page = () => {
   return (
-    <MainContainer>
+    <>
       <h2 className="text-4xl font-bold text-center py-3 my-3">
         Research Experience
       </h2>
@@ -250,7 +249,7 @@ const page = () => {
           </Card>
         ))}
       </div>
-    </MainContainer>
+    </>
   );
 };
 

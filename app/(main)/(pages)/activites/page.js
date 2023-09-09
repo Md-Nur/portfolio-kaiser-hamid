@@ -1,4 +1,3 @@
-import MainContainer from "@/components/basic/MainContainer";
 import { SiTodoist } from "react-icons/si";
 
 let activitesData = {
@@ -29,7 +28,6 @@ let activitesData = {
 };
 const page = () => {
   return (
-    <MainContainer>
     <section className="py-10 flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center w-full">
         <h2 className="text-3xl mt-20 font-bold">
@@ -61,7 +59,6 @@ const page = () => {
         </ul>
       </div>
     </section>
-    </MainContainer>
   );
 };
 

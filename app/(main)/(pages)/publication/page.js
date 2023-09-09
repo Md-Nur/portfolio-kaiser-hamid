@@ -1,5 +1,4 @@
 import Card from "@/components/basic/Card";
-import MainContainer from "@/components/basic/MainContainer";
 let publicationData = [
   {
     id: 1,
@@ -25,7 +24,7 @@ let publicationData = [
 ];
 const page = () => {
   return (
-    <MainContainer>
+    <>
       <h2 className="text-3xl font-bold text-center py-5 my-5">Publications</h2>
       <div className="flex flex-wrap gap-4 py-5 my-6">
         {publicationData.map((publication) => (
@@ -45,7 +44,7 @@ const page = () => {
           </Card>
         ))}
       </div>
-    </MainContainer>
+    </>
   );
 };
 

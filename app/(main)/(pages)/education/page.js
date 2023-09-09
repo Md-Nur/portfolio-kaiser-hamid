@@ -1,7 +1,4 @@
 import Card from "@/components/basic/Card";
-import MainContainer from "@/components/basic/MainContainer";
-import React from "react";
-
 let educationData = [
   {
     title: "B.Sc. in Computer Science and Engineering",
@@ -27,7 +24,6 @@ let educationData = [
 ];
 const page = () => {
   return (
-    <MainContainer>
       <section id="education" className="py-5 my-5">
         <h2 className="text-4xl font-bold text-center my-3">Education</h2>
         <div className="flex flex-wrap gap-5">
@@ -45,7 +41,6 @@ const page = () => {
           ))}
         </div>
       </section>
-    </MainContainer>
   );
 };
 

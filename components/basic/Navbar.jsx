@@ -1,12 +1,10 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { AiFillCaretDown } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
-import Image from "next/image";
-import useAuth from "@/context/useAuth";
 import { BiSolidUser } from "react-icons/bi";
-
+import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
 const navLinks = [
   {
     name: "Home",
@@ -58,16 +56,16 @@ const navLinks = [
 
 function Navbar() {
   const [dropdownDisplay, setDropdownDisplay] = useState("hidden");
-  const [modePic, setModePic] = useState("/moon.png");
+  const [modeIcon, setModeIcon] = useState("lightMode");
   const [menuDisplay, setMenuDisplay] = useState("hidden");
 
   const handleMode = () => {
-    if (modePic === "/moon.png") {
-      setModePic("/sun.png");
-      document.getElementById("mainHtml").classList.add("dark");
-    } else {
-      setModePic("/moon.png");
+    if (modeIcon === "darkMode") {
       document.getElementById("mainHtml").classList.remove("dark");
+      setModeIcon("lightMode");
+    } else {
+      document.getElementById("mainHtml").classList.add("dark");
+      setModeIcon("darkMode");
     }
   };
   const handleDropdown = () => {
@@ -107,10 +105,7 @@ function Navbar() {
                       onClick={handleDropdown}
                     >
                       {link.name}
-                      <ChevronDownIcon
-                        className="-mr-1 h-5 w-5 text-color1 dark:text-color4"
-                        aria-hidden="true"
-                      />
+                      <AiFillCaretDown className="-mr-1 h-5 w-5 text-color1 dark:text-color4" />
                     </button>
                     <div
                       className={`absolute w-28 text-center ${dropdownDisplay} mt-2 space-y-2 rounded bg-color4 dark:bg-color1`}
@@ -147,15 +142,11 @@ function Navbar() {
           </ul>
         </div>
         <div className="flex justify-around w-full max-w-[100px] sm:max-w-xs lg:w-auto lg:gap-5 items-center">
-          <Image
-            src={modePic}
-            alt="Mode"
-            onClick={handleMode}
-            width={20}
-            height={20}
-          />
+          <button onClick={handleMode}>
+            {modeIcon === "lightMode" ? <BsFillMoonFill /> : <BsFillSunFill />}
+          </button>
           <Link
-            href="/admin/profile"
+            href="/profile"
             className="rounded-full border border-color1 dark:border-color4 p-2 font-semibold hover:text-color4 hover:bg-color1 dark:hover:bg-color4 dark:hover:text-color1"
           >
             <BiSolidUser />

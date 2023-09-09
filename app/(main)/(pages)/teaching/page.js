@@ -1,4 +1,3 @@
-import MainContainer from "@/components/basic/MainContainer";
 import Card from "@/components/basic/Card";
 let teachingData = [
   {
@@ -25,7 +24,7 @@ let teachingData = [
 ];
 const page = () => {
   return (
-    <MainContainer>
+    <>
       <div className="py-10 flex flex-col items-center gap-3">
         <h1 className="text-3xl sm:text-4xl font-bold my-5">
           Teaching Experience
@@ -47,7 +46,7 @@ const page = () => {
           ))}
         </div>
       </div>
-    </MainContainer>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import { EnvelopeIcon } from "@heroicons/react/20/solid";
+import { HiMail } from "react-icons/hi";
 import { ImLocation2 } from "react-icons/im";
 const Footer = () => {
   return (
@@ -23,7 +23,7 @@ const Footer = () => {
           href="mailto:kaiserhamid715@gmail.com"
           className="flex gap-3 items-center"
         >
-          <EnvelopeIcon
+          <HiMail
             className="-mr-1 h-5 w-5 text-color1 dark:text-color4"
             aria-hidden="true"
           />

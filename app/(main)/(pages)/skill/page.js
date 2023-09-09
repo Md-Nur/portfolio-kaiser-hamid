@@ -32,7 +32,7 @@ let skillData = [
 
 const page = () => {
   return (
-    <MainContainer>
+
       <section className="py-10 flex flex-col items-center justify-center">
         <h1 className="text-3xl font-bold text-center md:text-4xl lg:text-5xl">
           Skills
@@ -76,7 +76,6 @@ const page = () => {
           ))}
         </ul>
       </section>
-    </MainContainer>
   );
 };
 

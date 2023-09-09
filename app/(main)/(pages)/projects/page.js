@@ -1,5 +1,4 @@
 import Card from "@/components/basic/Card";
-import MainContainer from "@/components/basic/MainContainer";
 
 
 let projectData = [
@@ -101,7 +100,7 @@ let projectData = [
 ];
 const page = () => {
   return (
-    <MainContainer>
+    <>
       <h2 className="text-4xl font-bold text-center py-3 my-3">
         Projects
       </h2>
@@ -152,7 +151,7 @@ const page = () => {
           </Card>
         ))}
       </div>
-    </MainContainer>
+    </>
   );
 };
 
