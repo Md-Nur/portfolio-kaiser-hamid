@@ -32,20 +32,16 @@ const LatestNews = () => {
       });
   }, []);
 
-  const addData = () => {
-    setVisibilty(true);
-  };
-
   const removeData = (docId) => {
     setRmDocId(docId);
     setRmAlert(true);
   };
-  
+
   const updateData = (docId) => {
     setUpdateId(docId);
     setVisibilty(true);
   };
-  
+
   return (
     <section className="py-5 my-10">
       <h2 className="text-4xl font-bold text-center py-3 my-3">
@@ -63,7 +59,6 @@ const LatestNews = () => {
         {latestNews.map((data) => (
           <li className="flex flex-col gap-2">
             <span className="text-xl font-bold">
-              {/* {data.$id} {" - "} */}
               {data.title}
               {data.linksTitle ? (
                 <a
@@ -91,7 +86,7 @@ const LatestNews = () => {
         ))}
       </ul>
       {loggedIn && (
-        <button className="mt-16" onClick={addData}>
+        <button className="mt-16" onClick={() => setVisibilty(true)}>
           <Button>Add a new latest news</Button>
         </button>
       )}
