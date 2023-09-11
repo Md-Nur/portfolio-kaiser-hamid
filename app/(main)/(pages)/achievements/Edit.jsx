@@ -73,6 +73,11 @@ const Edit = ({ updateId }) => {
     }
   };
 
+  const handleClose = () => {
+    setVisibilty("hidden");
+    window.location.reload();
+  };
+
   return (
     //  Create a card for adding latest news
     <div
@@ -177,9 +182,7 @@ const Edit = ({ updateId }) => {
                     )}
                   </Button>
                   <Button>
-                    <button onClick={() => setVisibilty("hidden")}>
-                      Close
-                    </button>
+                    <button onClick={handleClose}>Close</button>
                   </Button>
                 </div>
               </div>
