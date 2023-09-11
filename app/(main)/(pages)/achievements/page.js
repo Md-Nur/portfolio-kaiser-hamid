@@ -7,7 +7,6 @@ import Button from "@/components/basic/Button";
 import Edit from "./Edit";
 import RemoveData from "@/components/forms/RemoveData";
 
-
 const page = () => {
   const [achievementData, setAchievementData] = useState(null);
   const collectionId = "64fdd79d8317edfbf6c2";
@@ -43,6 +42,11 @@ const page = () => {
       (item) => item.type === "certification"
     );
   }
+
+  const addAchievments = () => {
+    setVisibilty(true);
+    window.location.reload();
+  };
   const removeData = (docId) => {
     setRmDocId(docId);
     setRmAlert(true);
@@ -52,11 +56,12 @@ const page = () => {
     setUpdateId(docId);
     setVisibilty(true);
   };
+
   return (
     <section className="flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center w-full">
         {loggedIn && (
-          <button className="w-44" onClick={() => setVisibilty(true)}>
+          <button className="w-44" onClick={addAchievments}>
             <Button>Add new award or certification</Button>
           </button>
         )}
