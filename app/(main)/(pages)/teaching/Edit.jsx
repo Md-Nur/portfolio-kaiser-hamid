@@ -4,16 +4,15 @@ import Button from "@/components/basic/Button";
 import Card from "@/components/basic/Card";
 
 const Edit = ({ updateId }) => {
-  // is update also contains the document id of the latest news which is to be updated.
-  const [achievments, setAchievments] = useState({
+  // update Id is update also contains the document id of the latest news which is to be updated.
+  const [teaching, setTeaching] = useState({
+    title: "",
     date: "",
-    descption: "",
-    youtubeLink: null,
-    posterLink: null,
-    type: null,
+    description: "",
+    company: "",
   });
 
-  let collectionId = "64fdd79d8317edfbf6c2";
+  let collectionId = "64ff89ef946be981facd";
   const [error, setError] = useState(null);
   const [visibilty, setVisibilty] = useState("fixed");
 
@@ -22,7 +21,7 @@ const Edit = ({ updateId }) => {
       appwriteService
         .readData(collectionId, updateId)
         .then((res) => {
-          setAchievments(res);
+          setTeaching(res);
         })
         .catch((error) => {
           setError(error.message);
@@ -30,39 +29,28 @@ const Edit = ({ updateId }) => {
     }, []);
   }
 
-  const addAchievments = async (e) => {
+  const addTeaching = async (e) => {
     e.preventDefault();
     try {
-      await appwriteService
-        .createData(collectionId, achievments)
-        .then((res) => {
-          setVisibilty("hidden");
-          window.location.reload();
-        });
+      await appwriteService.createData(collectionId, teaching).then((res) => {
+        setVisibilty("hidden");
+        window.location.reload();
+      });
     } catch (error) {
       setError(error.message);
     }
   };
 
-  const updateActivities = async (e) => {
+  const updateTeaching = async (e) => {
     e.preventDefault();
-    if (achievments.youtubeLink === "") {
-      achievments.youtubeLink = null;
-    }
-    if (achievments.posterLink === "") {
-      achievments.posterLink = null;
-    }
-    if (achievments.type === "") {
-      achievments.type = null;
-    }
+
     try {
       await appwriteService
         .updateData(collectionId, updateId, {
-          date: achievments.date,
-          descption: achievments.descption,
-          youtubeLink: achievments.youtubeLink,
-          posterLink: achievments.posterLink,
-          type: achievments.type,
+          title: teaching.title,
+          date: teaching.date,
+          description: teaching.description,
+          company: teaching.company,
         })
         .then((res) => {
           setVisibilty("hidden");
@@ -75,18 +63,16 @@ const Edit = ({ updateId }) => {
 
   const handleClose = () => {
     setVisibilty("hidden");
-    window.location.reload();
   };
 
   return (
-    //  Create a card for adding latest news
     <div
       className={`${visibilty} h-screen top-0 bg-gray-700 bg-opacity-70 z-30 left-0 flex flex-col items-center justify-center w-screen px-3 md:px-40`}
     >
       <Card>
         <div className="flex gap-y-4 flex-wrap">
           <h2 className="text-2xl font-bold text-center leading-tight w-full">
-            Achievements Section
+            Teaching Section
           </h2>
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
@@ -94,8 +80,9 @@ const Edit = ({ updateId }) => {
               <span className="block sm:inline"> {error}</span>
             </div>
           )}
+
           <form
-            // onSubmit={updateId ? updateActivities : addAchievments}
+            // onSubmit={updateId ? updateEducation : addEducation}
             className="w-full"
           >
             <div className="space-y-5">
@@ -104,81 +91,63 @@ const Edit = ({ updateId }) => {
                   <input
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                     type="text"
-                    value={achievments.date}
+                    value={teaching.title}
                     onChange={(e) =>
-                      setAchievments((prev) => ({
+                      setTeaching((prev) => ({
                         ...prev,
-                        date: e.target.value,
+                        title: e.target.value,
                       }))
                     }
-                    placeholder="Date"
+                    placeholder="Title"
                     required
                   />
 
                   <input
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                     type="text"
-                    value={achievments.descption}
+                    value={teaching.date}
                     onChange={(e) =>
-                      setAchievments((prev) => ({
+                      setTeaching((prev) => ({
                         ...prev,
-                        descption: e.target.value,
+                        date: e.target.value,
                       }))
                     }
-                    placeholder="Descption"
+                    placeholder="Duration of the teaching"
                     required
                   />
-
                   <input
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black"
-                    type="url"
-                    value={achievments.youtubeLink}
+                    type="text"
+                    value={teaching.description}
                     onChange={(e) =>
-                      setAchievments((prev) => ({
+                      setTeaching((prev) => ({
                         ...prev,
-                        youtubeLink: e.target.value,
+                        description: e.target.value,
                       }))
                     }
-                    placeholder="Youtube Link"
-                  />
-
-                  <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
-                    type="url"
-                    value={achievments.posterLink}
-                    onChange={(e) =>
-                      setAchievments((prev) => ({
-                        ...prev,
-                        posterLink: e.target.value,
-                      }))
-                    }
-                    placeholder="Poster Link"
-                  />
-                  <select
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black bg-white"
-                    name="type"
-                    id=""
-                    value={achievments.type}
-                    onChange={(e) =>
-                      setAchievments((prev) => ({
-                        ...prev,
-                        type: e.target.value,
-                      }))
-                    }
+                    placeholder="Description"
                     required
-                  >
-                    <option value="">Select Type</option>
-                    <option value="award">Award</option>
-                    <option value="certification">Certification</option>
-                  </select>
+                  />
+                  <input
+                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    type="text"
+                    value={teaching.company}
+                    onChange={(e) =>
+                      setTeaching((prev) => ({
+                        ...prev,
+                        company: e.target.value,
+                      }))
+                    }
+                    placeholder="Institution"
+                  />
                 </div>
 
                 <div className="flex items-center flex-wrap justify-evenly p-5 space-x-3">
                   <Button>
                     {updateId ? (
-                      <button onClick={updateActivities}>Update</button>
+                      <button onClick={updateTeaching}>Update</button>
                     ) : (
-                      <button onClick={addAchievments}>Add</button>
+                      <button onClick={addTeaching}>Add</button>
                     )}
                   </Button>
                   <Button>

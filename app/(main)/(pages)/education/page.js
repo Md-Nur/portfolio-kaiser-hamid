@@ -1,46 +1,93 @@
+"use client";
+import appwriteService from "@/appwrite/config";
 import Card from "@/components/basic/Card";
-let educationData = [
-  {
-    title: "B.Sc. in Computer Science and Engineering",
-    institution: "East Delta University",
-    duration: "2015 - 2019",
-    description:
-      "I received my Bachelors (B.Sc.) in Computer Science and Engineering (CSE) from East Delta University, Bangladesh. I was a member of the Computer Club of East Delta University (CCEdu). I was also a member of the East Delta University Debating Club (EDUDC).",
-  },
-  {
-    title: "Higher Secondary Certificate (HSC)",
-    institution: "Chittagong College",
-    duration: "2013 - 2015",
-    description:
-      "I received my Higher Secondary Certificate (HSC) from Chittagong College, Bangladesh. I was a member of the Chittagong College Debating Club (CCDC).",
-  },
-  {
-    title: "Secondary School Certificate (SSC)",
-    institution: "Chittagong Collegiate School",
-    duration: "2005 - 2013",
-    description:
-      "I received my Secondary School Certificate (SSC) from Chittagong Collegiate School, Bangladesh. I was a member of the Chittagong Collegiate School Debating Club (CCSDC).",
-  },
-];
+import { useState, useEffect } from "react";
+import Button from "@/components/basic/Button";
+import Edit from "./Edit";
+import RemoveData from "@/components/forms/RemoveData";
+import Loader from "@/components/basic/Loader";
+
 const page = () => {
+  const [educationData, setEducationData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [visibilty, setVisibilty] = useState(false);
+  const [rmAlert, setRmAlert] = useState(false);
+  const [updateId, setUpdateId] = useState(null);
+  const [rmDocId, setRmDocId] = useState(null);
+  const collectionId = "64ff77fcbf9033b96220";
+
+  useEffect(() => {
+    appwriteService
+      .getAllData(collectionId)
+      .then((res) => {
+        setEducationData(res.documents.reverse());
+      })
+      .catch((err) => {
+        setError(err);
+      });
+    appwriteService
+      .isLoggedIn()
+      .then(setLoggedIn)
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, []);
+
+  const removeData = (docId) => {
+    setRmDocId(docId);
+    setRmAlert(true);
+  };
+
+  const updateData = (docId) => {
+    setUpdateId(docId);
+    setVisibilty(true);
+  };
+
+  if (!educationData) {
+    return <Loader/>
+  }
+
   return (
-      <section id="education" className="py-5 my-5">
-        <h2 className="text-4xl font-bold text-center my-3">Education</h2>
-        <div className="flex flex-wrap gap-5">
-          {educationData.map((data, index) => (
-            <Card
-              key={index}
-              >
-              <h3 className="text-2xl font-bold text-center py-3 my-3">
-                {data.title}
-              </h3>
-              <p className="text-center text-xl">{data.institution}</p>
-              <p className="text-center text-xl">{data.duration}</p>
-              <p className="text-justify">{data.description}</p>
-            </Card>
-          ))}
+    <section className="py-5 my-5 flex flex-col items-center">
+      {loggedIn && (
+        <button className="w-44" onClick={() => setVisibilty(true)}>
+          <Button>Add new Education</Button>
+        </button>
+      )}
+      <h2 className="text-4xl font-bold text-center my-3">Education</h2>
+      {error && (
+        <div className="text-center text-red-500 text-xl font-bold">
+          {error.message}
         </div>
-      </section>
+      )}
+      {loggedIn && visibilty && <Edit updateId={updateId} />}
+      {loggedIn && rmAlert && (
+        <RemoveData docId={rmDocId} clId={collectionId} />
+      )}
+      <div className="flex flex-wrap gap-5">
+        {educationData.map((data, index) => (
+          <Card key={index}>
+            <h3 className="text-2xl font-bold text-center py-3 my-3">
+              {data.title}
+            </h3>
+            <p className="text-center text-xl">{data.institution}</p>
+            <p className="text-center text-xl">{data.duration}</p>
+            <p className="text-justify">{data.description}</p>
+            {loggedIn && (
+              <div className="space-x-3">
+                <button onClick={() => removeData(data.$id)}>
+                  <Button>Remove</Button>
+                </button>
+                <button onClick={() => updateData(data.$id)}>
+                  <Button>Update</Button>
+                </button>
+              </div>
+            )}
+          </Card>
+        ))}
+      </div>
+    </section>
   );
 };
 

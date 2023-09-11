@@ -93,11 +93,11 @@ function Navbar() {
 
         <div className="min-w-[800px] text-sm font-bold hidden lg:block max-w-[1000px]">
           <ul className="flex justify-evenly text-center">
-            {navLinks.map((link, key) => {
+            {navLinks.map((link, index) => {
               if (link.dropDown) {
                 return (
                   <li
-                    id={key}
+                    key={index}
                     className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md dropdown"
                   >
                     <button
@@ -110,12 +110,12 @@ function Navbar() {
                     <div
                       className={`absolute w-28 text-center ${dropdownDisplay} mt-2 space-y-2 rounded bg-color4 dark:bg-color1`}
                     >
-                      {link.subLinks.map((subLink, key) => (
+                      {link.subLinks.map((subLink, index) => (
                         <Link
                           className="hover:underline block"
                           aria-current="page"
                           href={subLink.link}
-                          id={key}
+                          key={index}
                         >
                           {subLink.name}
                         </Link>
@@ -127,7 +127,7 @@ function Navbar() {
               return (
                 <li
                   className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md"
-                  id={key}
+                  key={index}
                 >
                   <Link
                     className="hover:underline"
@@ -161,16 +161,16 @@ function Navbar() {
         className={`w-full fixed z-40 bg-color3 dark:bg-color2 text-color1 dark:text-color4  bg-opacity-80 dark:bg-opacity-80 ${menuDisplay} lg:hidden`}
       >
         <ul className="text-center">
-          {navLinks.map((link, key) => {
+          {navLinks.map((link, index) => {
             if (link.dropDown) {
               return (
-                <li className="" id={key}>
-                  {link.subLinks.map((subLink, key) => (
+                <li key={index}>
+                  {link.subLinks.map((subLink, index) => (
                     <Link
                       className="hover:underline hover:bg-color4 dark:hover:bg-color1 block"
                       aria-current="page"
                       href={subLink.link}
-                      id={key}
+                      key={index}
                     >
                       {subLink.name}
                     </Link>
@@ -182,7 +182,7 @@ function Navbar() {
             return (
               <li
                 className="hover:bg-color4 dark:hover:bg-color1 p-1 rounded-md"
-                id={key}
+                key={index}
               >
                 <Link
                   className="hover:underline"

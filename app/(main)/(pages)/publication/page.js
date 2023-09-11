@@ -1,50 +1,101 @@
+"use client";
 import Card from "@/components/basic/Card";
-let publicationData = [
-  {
-    id: 1,
-    title: "Cancer Classification",
-    description:
-      "Shovito Barua Soumma,shraq R. Rahman and Faisal Bin Ashraf “Machine Learning Approaches to Metastasis Bladder and Secondary Pulmonary Cancer Classification Using Gene Expression Data”, Proceedings of 25th International Conference on Computer and Information Technology (ICCIT 2022), [Accepted]",
-    asset: "./publications/Cancer_Classification.pdf",
-  },
-  {
-    id: 2,
-    title: "Brain Tumor Detection",
-    description:
-      "Shovito Barua Soumma, Md. Nazmul Islam, Plabon Paul and Faisal Bin Ashraf, “Finding Efficient Feature Extraction and Classification Architecture for Brain Tumor Detection from MRI Image”, Proceedings of 3rd International Conference ECCE 2022, December 17-19 [SUBMITTED]",
-    asset: "",
-  },
-  {
-    id: 3,
-    title: "Heart Disease Detection",
-    description:
-      "Shovito Barua Soumma, Md. Nazmul Islam, Plabon Paul and Faisal Bin Ashraf, “Finding Efficient Feature Extraction and Classification Architecture for Brain Tumor Detection from MRI Image”, Proceedings of 3rd International Conference ECCE 2022, December 17-19 [SUBMITTED]",
-    asset: "",
-  },
-];
+import appwriteService from "@/appwrite/config";
+import { useState, useEffect } from "react";
+import Loader from "@/components/basic/Loader";
+import Button from "@/components/basic/Button";
+import Edit from "./Edit";
+import RemoveData from "@/components/forms/RemoveData";
+
 const page = () => {
+  const [publicationData, setPublicationData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [visibilty, setVisibilty] = useState(false);
+  const [rmAlert, setRmAlert] = useState(false);
+  const [updateId, setUpdateId] = useState(null);
+  const [rmDocId, setRmDocId] = useState(null);
+  const collectionId = "64ff7fa8ea9a062831d3";
+
+  useEffect(() => {
+    appwriteService
+      .getAllData(collectionId)
+      .then((res) => {
+        setPublicationData(res.documents.reverse());
+      })
+      .catch((err) => {
+        setError(err);
+      });
+    appwriteService
+      .isLoggedIn()
+      .then(setLoggedIn)
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, []);
+
+  const removeData = (docId) => {
+    setRmDocId(docId);
+    setRmAlert(true);
+  };
+
+  const updateData = (docId) => {
+    setUpdateId(docId);
+    setVisibilty(true);
+  };
+
+  if (!publicationData) {
+    return <Loader />;
+  }
+
   return (
-    <>
-      <h2 className="text-3xl font-bold text-center py-5 my-5">Publications</h2>
-      <div className="flex flex-wrap gap-4 py-5 my-6">
-        {publicationData.map((publication) => (
-          <Card
-            key={publication.id}
-          >
-            <h3 className="text-xl font-bold">{publication.title}</h3>
-            <p className="text-sm">{publication.description}</p>
-            <a
-              href={publication.asset}
-              className="  hover:text-orange-700"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Read More
-            </a>
+    <section className="flex flex-col items-center">
+      {loggedIn && (
+        <button className="w-44" onClick={() => setVisibilty(true)}>
+          <Button>Add new Publication</Button>
+        </button>
+      )}
+      <h2 className="text-3xl font-bold text-center py-1 my-1">Publications</h2>
+      {error && (
+        <div className="text-center text-red-500 text-xl font-bold">
+          {error}
+        </div>
+      )}
+      {loggedIn && visibilty && <Edit updateId={updateId} />}
+      {rmAlert && <RemoveData collectionId={collectionId} docId={rmDocId} />}
+
+      <div className="flex flex-wrap gap-4 py-3 my-3">
+        {publicationData.map((publication, index) => (
+          <Card key={index}>
+            <div className="flex flex-col gap-3 items-center">
+              <h3 className="text-2xl font-bold">{publication.title}</h3>
+              <p className="">{publication.description}</p>
+              {publication.asset && (
+                <a href={publication.asset} className="" target="_blank">
+                  <Button>Read More</Button>
+                </a>
+              )}
+              {loggedIn && (
+                <div className="flex justify-center gap-5">
+                  <button
+                    onClick={() => removeData(publication.$id)}
+                    className="w-24"
+                  >
+                    <Button>Remove</Button>
+                  </button>
+                  <button
+                    onClick={() => updateData(publication.$id)}
+                    className="w-24"
+                  >
+                    <Button>Update</Button>
+                  </button>
+                </div>
+              )}
+            </div>
           </Card>
         ))}
       </div>
-    </>
+    </section>
   );
 };
 

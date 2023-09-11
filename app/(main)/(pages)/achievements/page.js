@@ -2,11 +2,9 @@
 import { GiTrophy } from "react-icons/gi";
 import { useState, useEffect } from "react";
 import appwriteService from "@/appwrite/config";
-import Loader from "@/components/basic/Loader";
 import Button from "@/components/basic/Button";
 import Edit from "./Edit";
 import RemoveData from "@/components/forms/RemoveData";
-
 
 const page = () => {
   const [achievementData, setAchievementData] = useState(null);
@@ -43,7 +41,7 @@ const page = () => {
       (item) => item.type === "certification"
     );
   }
-  
+
   const removeData = (docId) => {
     setRmDocId(docId);
     setRmAlert(true);
@@ -54,12 +52,11 @@ const page = () => {
     setVisibilty(true);
   };
 
-
   return (
     <section className="flex flex-col items-center justify-center">
       <div className="flex flex-col items-center justify-center w-full">
         {loggedIn && (
-          <button className="w-44" onClick={() => setVisibilty(true)}>
+          <button className="w-52" onClick={() => setVisibilty(true)}>
             <Button>Add new award or certification</Button>
           </button>
         )}

@@ -5,15 +5,13 @@ import Card from "@/components/basic/Card";
 
 const Edit = ({ updateId }) => {
   // is update also contains the document id of the latest news which is to be updated.
-  const [achievments, setAchievments] = useState({
-    date: "",
-    descption: "",
-    youtubeLink: null,
-    posterLink: null,
-    type: null,
+  const [publication, setPublication] = useState({
+    title: "",
+    description: "",
+    asset: null,
   });
 
-  let collectionId = "64fdd79d8317edfbf6c2";
+  let collectionId = "64ff7fa8ea9a062831d3";
   const [error, setError] = useState(null);
   const [visibilty, setVisibilty] = useState("fixed");
 
@@ -22,7 +20,7 @@ const Edit = ({ updateId }) => {
       appwriteService
         .readData(collectionId, updateId)
         .then((res) => {
-          setAchievments(res);
+          setPublication(res);
         })
         .catch((error) => {
           setError(error.message);
@@ -30,11 +28,11 @@ const Edit = ({ updateId }) => {
     }, []);
   }
 
-  const addAchievments = async (e) => {
+  const addPublication = async (e) => {
     e.preventDefault();
     try {
       await appwriteService
-        .createData(collectionId, achievments)
+        .createData(collectionId, publication)
         .then((res) => {
           setVisibilty("hidden");
           window.location.reload();
@@ -44,25 +42,17 @@ const Edit = ({ updateId }) => {
     }
   };
 
-  const updateActivities = async (e) => {
+  const updatePublication = async (e) => {
     e.preventDefault();
-    if (achievments.youtubeLink === "") {
-      achievments.youtubeLink = null;
-    }
-    if (achievments.posterLink === "") {
-      achievments.posterLink = null;
-    }
-    if (achievments.type === "") {
-      achievments.type = null;
+    if (publication.asset == "") {
+      publication.asset = null;
     }
     try {
       await appwriteService
         .updateData(collectionId, updateId, {
-          date: achievments.date,
-          descption: achievments.descption,
-          youtubeLink: achievments.youtubeLink,
-          posterLink: achievments.posterLink,
-          type: achievments.type,
+          title: publication.title,
+          description: publication.description,
+          asset: publication.asset,
         })
         .then((res) => {
           setVisibilty("hidden");
@@ -86,7 +76,7 @@ const Edit = ({ updateId }) => {
       <Card>
         <div className="flex gap-y-4 flex-wrap">
           <h2 className="text-2xl font-bold text-center leading-tight w-full">
-            Achievements Section
+            Publication Section
           </h2>
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
@@ -95,7 +85,7 @@ const Edit = ({ updateId }) => {
             </div>
           )}
           <form
-            // onSubmit={updateId ? updateActivities : addAchievments}
+            // onSubmit={updateId ? updatePublication : addPublication}
             className="w-full"
           >
             <div className="space-y-5">
@@ -104,81 +94,48 @@ const Edit = ({ updateId }) => {
                   <input
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                     type="text"
-                    value={achievments.date}
+                    value={publication.title}
                     onChange={(e) =>
-                      setAchievments((prev) => ({
+                      setPublication((prev) => ({
                         ...prev,
-                        date: e.target.value,
+                        title: e.target.value,
                       }))
                     }
-                    placeholder="Date"
+                    placeholder="Title"
                     required
                   />
-
                   <input
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                     type="text"
-                    value={achievments.descption}
+                    value={publication.description}
                     onChange={(e) =>
-                      setAchievments((prev) => ({
+                      setPublication((prev) => ({
                         ...prev,
-                        descption: e.target.value,
+                        description: e.target.value,
                       }))
                     }
-                    placeholder="Descption"
-                    required
+                    placeholder="Description"
                   />
-
                   <input
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                     type="url"
-                    value={achievments.youtubeLink}
+                    value={publication.asset}
                     onChange={(e) =>
-                      setAchievments((prev) => ({
+                      setPublication((prev) => ({
                         ...prev,
-                        youtubeLink: e.target.value,
+                        asset: e.target.value,
                       }))
                     }
-                    placeholder="Youtube Link"
+                    placeholder="If you want to add a link to the publication, add it here."
                   />
-
-                  <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
-                    type="url"
-                    value={achievments.posterLink}
-                    onChange={(e) =>
-                      setAchievments((prev) => ({
-                        ...prev,
-                        posterLink: e.target.value,
-                      }))
-                    }
-                    placeholder="Poster Link"
-                  />
-                  <select
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black bg-white"
-                    name="type"
-                    id=""
-                    value={achievments.type}
-                    onChange={(e) =>
-                      setAchievments((prev) => ({
-                        ...prev,
-                        type: e.target.value,
-                      }))
-                    }
-                    required
-                  >
-                    <option value="">Select Type</option>
-                    <option value="award">Award</option>
-                    <option value="certification">Certification</option>
-                  </select>
                 </div>
 
                 <div className="flex items-center flex-wrap justify-evenly p-5 space-x-3">
                   <Button>
                     {updateId ? (
-                      <button onClick={updateActivities}>Update</button>
+                      <button onClick={updatePublication}>Update</button>
                     ) : (
-                      <button onClick={addAchievments}>Add</button>
+                      <button onClick={addPublication}>Add</button>
                     )}
                   </Button>
                   <Button>
