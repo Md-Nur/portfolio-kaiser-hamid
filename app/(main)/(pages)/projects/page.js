@@ -7,24 +7,6 @@ import Button from "@/components/basic/Button";
 import Edit from "./Edit";
 import RemoveData from "@/components/forms/RemoveData";
 
-let projectData2 = [
-  {
-    title:
-      "Tuberculosis Detection using Chest X-ray with Deep Learning L4 T2 (8th semester, ML Lab Project)",
-    duration: "2022",
-    technologies: "CoLab, Tensorflow, CNN",
-    description:
-      "In this work, I have detected TB reliably from the chest X-ray images using image pre-processing, data augmentation and deep-learning classification techniques. Four different deep CNNs (ResNet18, ChexNet, InceptionV3, and MobileNet) were used for transfer learning from their pre-trained initial weights and were trained,validated and tested for classifying TB and non-TB normal cases.",
-    imageUrls: ["/project/tb.png"],
-    referenceLinks: [
-      {
-        preview: "Presentation",
-        url: "https://docs.google.com/presentation/d/1lhM0Xd_q_VTgRb3axwLJsDBdhZgiCZCV_PGs3uxRBEc/edit#slide=id.g11489bc8cae_0_190",
-      },
-    ],
-  },
-
-];
 const page = () => {
   const [projectData, setProjectData] = useState([]);
   const [error, setError] = useState(null);
@@ -67,7 +49,7 @@ const page = () => {
   }
 
   return (
-    <section>
+    <>
       {loggedIn && (
         <button className="w-44" onClick={() => setVisibilty(true)}>
           <Button>Add new Project</Button>
@@ -152,7 +134,7 @@ const page = () => {
           </Card>
         ))}
       </div>
-    </section>
+    </>
   );
 };
 
