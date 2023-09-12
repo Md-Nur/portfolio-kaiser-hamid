@@ -5,13 +5,14 @@ import Card from "@/components/basic/Card";
 
 const Edit = ({ updateId }) => {
   // is update also contains the document id of the latest news which is to be updated.
-  const [activities, setActivities] = useState({
+  const [professionalXp, setProfessionalXp] = useState({
+    title: "",
     date: "",
-    "desc-quote": "",
-    type: null,
+    description: "",
+    company: "",
   });
 
-  let collectionId = "64ff687d550f62a435ff";
+  let collectionId = "650079ce608213b800a2";
   const [error, setError] = useState(null);
   const [visibilty, setVisibilty] = useState("fixed");
 
@@ -20,7 +21,7 @@ const Edit = ({ updateId }) => {
       appwriteService
         .readData(collectionId, updateId)
         .then((res) => {
-          setActivities(res);
+          setProfessionalXp(res);
         })
         .catch((error) => {
           setError(error.message);
@@ -28,29 +29,29 @@ const Edit = ({ updateId }) => {
     }, []);
   }
 
-  const addActivities = async (e) => {
+  const addProfessionalXp = async (e) => {
     e.preventDefault();
     try {
-      await appwriteService.createData(collectionId, activities).then((res) => {
-        setVisibilty("hidden");
-        window.location.reload();
-      });
+      await appwriteService
+        .createData(collectionId, professionalXp)
+        .then((res) => {
+          setVisibilty("hidden");
+          window.location.reload();
+        });
     } catch (error) {
       setError(error.message);
     }
   };
 
-  const updateActivities = async (e) => {
+  const updateProfessionalXp = async (e) => {
     e.preventDefault();
-    if (activities.type === "") {
-      activities.type = null;
-    }
     try {
       await appwriteService
         .updateData(collectionId, updateId, {
-          date: activities.date,
-          "desc-quote": activities["desc-quote"],
-          type: activities.type,
+          title: professionalXp.title,
+          date: professionalXp.date,
+          description: professionalXp.description,
+          company: professionalXp.company,
         })
         .then((res) => {
           setVisibilty("hidden");
@@ -74,7 +75,7 @@ const Edit = ({ updateId }) => {
       <Card>
         <div className="flex gap-y-4 flex-wrap">
           <h2 className="text-2xl font-bold text-center leading-tight w-full">
-            Activities Section
+            Professional Experience Section
           </h2>
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
@@ -83,7 +84,7 @@ const Edit = ({ updateId }) => {
             </div>
           )}
           <form
-            // onSubmit={updateId ? updateActivities : addActivities}
+            // onSubmit={updateId ? updateProfessionalXp : addProfessionalXp}
             className="w-full"
           >
             <div className="space-y-5">
@@ -92,54 +93,64 @@ const Edit = ({ updateId }) => {
                   <input
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                     type="text"
-                    value={activities.date}
+                    value={professionalXp.title}
                     onChange={(e) =>
-                      setActivities((prev) => ({
+                      setProfessionalXp((prev) => ({
                         ...prev,
-                        date: e.target.value,
+                        title: e.target.value,
                       }))
                     }
-                    placeholder="Date"
+                    placeholder="Title"
                     required
                   />
 
                   <input
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                     type="text"
-                    value={activities["desc-quote"]}
+                    value={professionalXp.date}
                     onChange={(e) =>
-                      setActivities((prev) => ({
+                      setProfessionalXp((prev) => ({
                         ...prev,
-                        "desc-quote": e.target.value,
+                        date: e.target.value,
                       }))
                     }
-                    placeholder="Descption / Quote"
+                    placeholder="Time Period"
                     required
                   />
-                  <select
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black bg-white"
-                    name="type"
-                    value={activities.type}
+                  <input
+                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    type="text"
+                    value={professionalXp.description}
                     onChange={(e) =>
-                      setActivities((prev) => ({
+                      setProfessionalXp((prev) => ({
                         ...prev,
-                        type: e.target.value,
+                        description: e.target.value,
                       }))
                     }
+                    placeholder="Description"
                     required
-                  >
-                    <option>Select Type</option>
-                    <option value="curricular">Curricular</option>
-                    <option value="quote">Quote</option>
-                  </select>
+                  />
+                  <input
+                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    type="text"
+                    value={professionalXp.company}
+                    onChange={(e) =>
+                      setProfessionalXp((prev) => ({
+                        ...prev,
+                        company: e.target.value,
+                      }))
+                    }
+                    placeholder="Company"
+                    required
+                  />
                 </div>
 
                 <div className="flex items-center flex-wrap justify-evenly p-5 space-x-3">
                   <Button>
                     {updateId ? (
-                      <button onClick={updateActivities}>Update</button>
+                      <button onClick={updateProfessionalXp}>Update</button>
                     ) : (
-                      <button onClick={addActivities}>Add</button>
+                      <button onClick={addProfessionalXp}>Add</button>
                     )}
                   </Button>
                   <Button>

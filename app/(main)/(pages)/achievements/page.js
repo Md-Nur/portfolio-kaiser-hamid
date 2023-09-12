@@ -109,15 +109,21 @@ const page = () => {
                 </a>
               ) : null}
               {loggedIn && (
-                <div className="space-x-5">
-                  <button onClick={() => removeData(award.$id)}>
-                    <Button>Remove</Button>
-                  </button>
-                  <button onClick={() => updateData(award.$id)}>
-                    <Button>Update</Button>
-                  </button>
-                </div>
-              )}
+              <div className="flex justify-end gap-3">
+                <button
+                  className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
+                  onClick={() => removeData(data.$id)}
+                >
+                  Remove
+                </button>
+                <button
+                  className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
+                  onClick={() => updateData(data.$id)}
+                >
+                  Update
+                </button>
+              </div>
+            )}
             </div>
           ))}
         </div>
@@ -155,15 +161,21 @@ const page = () => {
                 </a>
               ) : null}
               {loggedIn && (
-                <div className="space-x-5">
-                  <button onClick={() => removeData(certification.$id)}>
-                    <Button>Remove</Button>
-                  </button>
-                  <button onClick={() => updateData(certification.$id)}>
-                    <Button>Update</Button>
-                  </button>
-                </div>
-              )}
+              <div className="flex justify-end gap-3">
+                <button
+                  className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
+                  onClick={() => removeData(data.$id)}
+                >
+                  Remove
+                </button>
+                <button
+                  className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
+                  onClick={() => updateData(data.$id)}
+                >
+                  Update
+                </button>
+              </div>
+            )}
             </div>
           ))}
         </div>

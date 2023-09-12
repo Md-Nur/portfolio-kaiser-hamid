@@ -86,7 +86,7 @@ function Navbar() {
 
   return (
     <header className=" bg-color3 dark:bg-color2 text-color1 dark:text-color4">
-      <nav className="fixed z-40 w-screen flex justify-evenly bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
+      <nav className="fixed z-20 w-screen flex justify-evenly bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
         <div className="text-lg font-bold">
           <Link href="/">Kaiser</Link>
         </div>
