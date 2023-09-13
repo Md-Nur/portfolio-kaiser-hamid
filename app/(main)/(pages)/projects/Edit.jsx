@@ -41,7 +41,7 @@ const Edit = ({ updateId }) => {
       projects.imageUrls = [];
     } else if (projects.imageUrls.includes(",")) {
       projects.imageUrls = projects.imageUrls.split(",");
-    } else {
+    } else if(typeof projects.imageUrls === "string") {
       projects.imageUrls = [projects.imageUrls];
     }
     if (projects.referenceUrl1 === "") {
@@ -50,7 +50,7 @@ const Edit = ({ updateId }) => {
     if (projects.referenceUrl2 === "") {
       projects.referenceUrl2 = null;
     }
-    if (projects.youtubeFrame === "") {
+    if (projects.youtubeFrame === "" || projects.youtubeFrame === null) {
       projects.youtubeFrame = null;
     } else {
       url = projects.youtubeFrame.split("/")[3];
@@ -95,7 +95,7 @@ const Edit = ({ updateId }) => {
           referenceUrl2: projects.referenceUrl2,
           youtubeFrame: projects.youtubeFrame,
         })
-        .then(() => {
+        .then((res) => {
           setVisibilty("hidden");
           window.location.reload();
         });

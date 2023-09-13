@@ -81,7 +81,11 @@ const page = () => {
               {data.referencePreview1 ? (
                 <div className="text-lg py-3">
                   <div className="">
-                    <a href={data.referenceUrl1} className="px-2  ">
+                    <a
+                      href={data.referenceUrl1}
+                      target="_blank"
+                      className="px-2  "
+                    >
                       [{data.referencePreview1}]
                     </a>
                   </div>
@@ -90,7 +94,11 @@ const page = () => {
               {data.referencePreview2 ? (
                 <div className="text-lg py-3">
                   <div className="">
-                    <a href={data.referenceUrl2} className="px-2  ">
+                    <a
+                      href={data.referenceUrl2}
+                      target="_blank"
+                      className="px-2  "
+                    >
                       [{data.referencePreview2}]
                     </a>
                   </div>

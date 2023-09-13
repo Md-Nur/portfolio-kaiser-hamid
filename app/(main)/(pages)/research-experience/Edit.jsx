@@ -39,18 +39,18 @@ const Edit = ({ updateId }) => {
 
   const extraEdit = () => {
     if (researchXp.imageUrls === "") {
-      researchXp.imageUrls = ["nur"];
+      researchXp.imageUrls = [];
     } else if (researchXp.imageUrls.includes("||")) {
       researchXp.imageUrls = researchXp.imageUrls.split("||");
-    } else {
+    } else if (typeof researchXp.imageUrls === "string") {
       researchXp.imageUrls = [researchXp.imageUrls];
     }
 
     if (researchXp.main_objectives === "") {
-      researchXp.main_objectives = null;
+      researchXp.main_objectives = [];
     } else if (researchXp.main_objectives.includes("||")) {
       researchXp.main_objectives = researchXp.main_objectives.split("||");
-    } else {
+    } else if (typeof researchXp.main_objectives === "string") {
       researchXp.main_objectives = [researchXp.main_objectives];
     }
 
@@ -59,18 +59,18 @@ const Edit = ({ updateId }) => {
     } else if (researchXp.external_collaborators_names.includes("||")) {
       researchXp.external_collaborators_names =
         researchXp.external_collaborators_names.split("||");
-    } else {
+    } else if (typeof researchXp.external_collaborators_names === "string") {
       researchXp.external_collaborators_names = [
         researchXp.external_collaborators_names,
       ];
     }
 
     if (researchXp.external_collaborators_company === "") {
-      researchXp.external_collaborators_company = null;
+      researchXp.external_collaborators_company = [];
     } else if (researchXp.external_collaborators_company.includes("||")) {
       researchXp.external_collaborators_company =
         researchXp.external_collaborators_company.split("||");
-    } else {
+    } else if (typeof researchXp.external_collaborators_company === "string") {
       researchXp.external_collaborators_company = [
         researchXp.external_collaborators_company,
       ];
@@ -81,7 +81,7 @@ const Edit = ({ updateId }) => {
     } else if (researchXp.external_collaborators_education.includes("||")) {
       researchXp.external_collaborators_education =
         researchXp.external_collaborators_education.split("||");
-    } else {
+    } else if (typeof researchXp.external_collaborators_education === "string") {
       researchXp.external_collaborators_education = [
         researchXp.external_collaborators_education,
       ];
@@ -91,7 +91,7 @@ const Edit = ({ updateId }) => {
       researchXp.reports = null;
     } else if (researchXp.reports.includes("||")) {
       researchXp.reports = researchXp.reports.split("||");
-    } else {
+    } else if (typeof researchXp.reports === "string") {
       researchXp.reports = [researchXp.reports];
     }
 
@@ -109,8 +109,8 @@ const Edit = ({ updateId }) => {
     try {
       await appwriteService.createData(collectionId, researchXp).then((res) => {
         setVisibilty("hidden");
-        // window.location.reload();
-        console.info("Research Experience Added", res)
+        window.location.reload();
+        console.info("Research Experience Added", res);
       });
     } catch (error) {
       setError(error.message);
@@ -141,8 +141,7 @@ const Edit = ({ updateId }) => {
         })
         .then((res) => {
           setVisibilty("hidden");
-        //   window.location.reload();
-            console.info("Research Experience Updated", res)
+          window.location.reload();
         });
     } catch (error) {
       setError(error.message);

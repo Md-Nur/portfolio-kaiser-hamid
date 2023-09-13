@@ -8,64 +8,6 @@ import Button from "@/components/basic/Button";
 import Edit from "./Edit";
 import RemoveData from "@/components/forms/RemoveData";
 
-let researchData2 = [
-  {
-    title:
-      "Impact of Social Media on Family Bondings (HCI, Sociology, Human Psychology)",
-    duration: "October 2022 - Present",
-    supervisor: "Prof. Dr. A B M Alim Al Islam, CSE, BUET",
-    description:
-      "We are examining if the use of social media in Bangladesh contributes to a breakdown in communication between family members. Data has been collected using semi-structured face-to-face interviews. The Thematic technique will be used to collect and evaluate data from the recorded audio scripts of our interviewees in order to identify a pattern.",
-    imageUrls: ["./research-xp/r1.jpeg"],
-    imageTitle: "",
-    main_objectives: [],
-    external_collaborators: [{ name: "", company: "", education: "" }],
-    thesisUrl: "",
-    publicationsUrl: "",
-    reports: [],
-  },
-  {
-    title:
-      "Android Malware Detection Based on System Calls Using NLP and Machine Learning Algorithms (ML, Security and Privacy)",
-    duration: "April 2022 - Present",
-    supervisor: "Prof. Dr. A B M Alim Al Islam, CSE, BUET",
-    description:
-      "I wanted to extend one of Dr. Hossain’s previous research where he used 1-step transition probability between the system calls to detect malware apk. As the prior model cannot capture the order or structure of system calls, it lacks semantic information. So after conducting a literature review to identify the limitations of the existing method for evading System Call-based Intrusion Detection System (IDS), I proposed a Machine Learning based robust dynamic method to detect malware apks, that can automatically execute the code routines as well as generate the user behavior of the android app.",
-    imageUrls: ["./research-xp/r3.png", "./research-xp/r5.png"],
-    imageTitle: "fig:work process and parsed system calls",
-    main_objectives: [
-      "Generate user behavior during the system call retrieval from a virtual android device",
-      "Use a universal sentence encoder to represent each system call with an equivalent vector of 512 dimensions.",
-      "Finally, a random forest classifier with 100 estimators is used to ‘accurately’ classify our data. Along with the Random Forest (RF) model, we ran experiments with other models, such as Logistic Regression, Multilayer Perceptron (MLP) and XGBoost to compare our results.",
-    ],
-    external_collaborators: [
-      {
-        name: "A S M Ahsan-Ul Haque",
-        company: "Software Development Engineer, Amazon.com",
-        education:
-          "M.Sc, University of Virginia [2022], B.Sc in CSE, BUET [2017]",
-      },
-    ],
-    thesisUrl: "",
-    publicationsUrl: "",
-    reports: [],
-  },
-  {
-    title:
-      "Finding Efficient Feature Extraction and Classification Architecture for Brain Tumor Detection from MRI Image",
-    duration: "2022",
-    supervisor: "",
-    description:
-      "Brain MRIs are notoriously imprecise in revealing the presence or absence of tumors. Using MRI scans of the brain, a Convolutional Neural Network (CNN) was trained to identify the presence of a tumor in this research. In order to evaluate the CNN model's capability for processing images, we applied the extracted features from DL different models into following ML models: KNN, Logistic regression, SVM, Random Forest, Naive Bayes, and Perception.\nWe have implemented four different models which are Densenet, Resnet50, EfficientnetB0, and our own custom CNN model. For optimization of our deep learning model, we used Adam algorithm. First, the performance is evaluated using several performance metrics. During the training of a model, we concentrated on reducing loss while simultaneously boosting accuracy",
-    imageUrls: ["./research-xp/r9.png", "./research-xp/r10.png"],
-    imageTitle: "fig:work process and accuracy",
-    main_objectives: [],
-    external_collaborators: [{ name: "", company: "", education: "" }],
-    thesisUrl: "",
-    publicationsUrl: "",
-    reports: [],
-  },
-];
 const page = () => {
   const [researchData, setResearchData] = useState([]);
   const [error, setError] = useState(null);
