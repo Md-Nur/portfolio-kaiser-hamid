@@ -112,13 +112,13 @@ const page = () => {
               <div className="flex justify-end gap-3">
                 <button
                   className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
-                  onClick={() => removeData(data.$id)}
+                  onClick={() => removeData(award.$id)}
                 >
                   Remove
                 </button>
                 <button
                   className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
-                  onClick={() => updateData(data.$id)}
+                  onClick={() => updateData(award.$id)}
                 >
                   Update
                 </button>
@@ -164,13 +164,13 @@ const page = () => {
               <div className="flex justify-end gap-3">
                 <button
                   className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
-                  onClick={() => removeData(data.$id)}
+                  onClick={() => removeData(certification.$id)}
                 >
                   Remove
                 </button>
                 <button
                   className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
-                  onClick={() => updateData(data.$id)}
+                  onClick={() => updateData(certification.$id)}
                 >
                   Update
                 </button>

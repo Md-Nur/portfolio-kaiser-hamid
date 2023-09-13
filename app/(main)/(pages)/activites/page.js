@@ -92,13 +92,13 @@ const page = () => {
                 <div className="flex justify-end gap-3">
                   <button
                     className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
-                    onClick={() => removeData(data.$id)}
+                    onClick={() => removeData(activity.$id)}
                   >
                     Remove
                   </button>
                   <button
                     className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
-                    onClick={() => updateData(data.$id)}
+                    onClick={() => updateData(activity.$id)}
                   >
                     Update
                   </button>
@@ -114,12 +114,18 @@ const page = () => {
               <BsFillChatSquareQuoteFill />
               <strong>{quote["desc-quote"]}</strong>
               {loggedIn && (
-                <div className="space-x-5">
-                  <button onClick={() => removeData(quote.$id)}>
-                    <Button>Remove</Button>
+                <div className="flex justify-end gap-3">
+                  <button
+                    className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
+                    onClick={() => removeData(quote.$id)}
+                  >
+                    Remove
                   </button>
-                  <button onClick={() => updateData(quote.$id)}>
-                    <Button>Update</Button>
+                  <button
+                    className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
+                    onClick={() => updateData(quote.$id)}
+                  >
+                    Update
                   </button>
                 </div>
               )}

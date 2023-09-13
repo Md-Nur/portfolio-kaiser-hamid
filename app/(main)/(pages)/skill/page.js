@@ -1,81 +1,161 @@
+"use client";
 import Card from "@/components/basic/Card";
-import MainContainer from "@/components/basic/MainContainer";
-
-let skillData = [
-  [
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/512px-HTML5_logo_and_wordmark.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/512px-CSS3_logo_and_wordmark.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/512px-Unofficial_JavaScript_logo_2.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/React.svg/512px-React.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/512px-Git_icon.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/512px-Postgresql_elephant.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/512px-Sass_Logo_Color.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/512px-Git_icon.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1200px-C_Programming_Language.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/512px-ISO_C%2B%2B_Logo.svg.png",
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/512px-Python-logo-notext.svg.png",
-  ],
-  {
-    "Programing Languages": ["C", "C++", "Python", "Java", "JavaScript"],
-    "Web Development": ["HTML", "CSS", "React", "Node.js", "Express.js"],
-    Database: ["MongoDB", "PostgreSQL", "SQLite"],
-    Expert: ["HTML", "CSS", "React", "Node.js", "Express.js"],
-    Intermediate: ["MongoDB", "PostgreSQL", "SQLite"],
-    Beginner: ["Sass", "VS Code", "Git"],
-    Software: ["Adobe Photoshop", "Adobe Illustrator", "Adobe XD"],
-    Others: ["Sass", "VS Code", "Git"],
-  },
-  ["Bangla", "English", "Hindi", "Arabic", "Korean", "Spanish"],
-];
+import appwriteService from "@/appwrite/config";
+import { useState, useEffect } from "react";
+import Loader from "@/components/basic/Loader";
+import Button from "@/components/basic/Button";
+import Edit from "./Edit";
+import RemoveData from "@/components/forms/RemoveData";
 
 const page = () => {
-  return (
+  const [skillData, setSkillData] = useState([]);
+  const [error, setError] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [visibilty, setVisibilty] = useState(false);
+  const [rmAlert, setRmAlert] = useState(false);
+  const [updateId, setUpdateId] = useState(null);
+  const [rmDocId, setRmDocId] = useState(null);
+  const collectionId = "65017257bc6662f0fd4b";
+  let technical = {
+    "Programing Languages": [],
+    "Web Development": [],
+    Database: [],
+    Expert: [],
+    Intermediate: [],
+    Beginner: [],
+    Software: [],
+    Others: [],
+  };
+  let languages = [];
+  useEffect(() => {
+    appwriteService
+      .getAllData(collectionId)
+      .then((res) => {
+        setSkillData(res.documents.reverse());
+      })
+      .catch((err) => {
+        setError(err);
+      });
+    appwriteService
+      .isLoggedIn()
+      .then(setLoggedIn)
+      .catch((error) => {
+        setError(error.message);
+      });
+  }, []);
 
-      <section className="py-10 flex flex-col items-center justify-center">
-        <h1 className="text-3xl font-bold text-center md:text-4xl lg:text-5xl">
-          Skills
-        </h1>
-        <div className="flex flex-wrap justify-center items-baseline w-full mt-5">
-          {skillData[0].map((skill, index) => (
-            <div key={index}>
-              <img src={skill} alt="skill" className="h-16 m-2" />
-            </div>
-          ))}
+  const removeData = (docId) => {
+    setRmDocId(docId);
+    setRmAlert(true);
+  };
+
+  const updateData = (docId) => {
+    setUpdateId(docId);
+    setVisibilty(true);
+  };
+
+  if (skillData) {
+    technical["Programing Languages"] = skillData.filter(
+      (item) => item.type === "Programing Languages"
+    );
+    technical["Web Development"] = skillData.filter(
+      (item) => item.type === "Web Development"
+    );
+    technical.Database = skillData.filter((item) => item.type === "Database");
+    technical.Expert = skillData.filter((item) => item.type === "Expert");
+    technical.Intermediate = skillData.filter(
+      (item) => item.type === "Intermediate"
+    );
+    technical.Beginner = skillData.filter((item) => item.type === "Beginner");
+    technical.Software = skillData.filter((item) => item.type === "Software");
+    technical.Others = skillData.filter((item) => item.type === "Others");
+
+    languages = skillData.filter((item) => item.type === "Language");
+  }
+  return (
+    <section className="py-10 flex flex-col items-center justify-center">
+      <h1 className="text-3xl font-bold text-center md:text-4xl lg:text-5xl">
+        Skills
+      </h1>
+      {error && (
+        <div className="flex justify-center items-center w-full">
+          <span className="text-red-500 font-bold">{error}</span>
         </div>
-        <h2 className="text-3xl mt-20 font-bold">Technical Skills</h2>
-        <div className="flex flex-wrap gap-5 justify-center items-center w-full my-5">
-          {Object.keys(skillData[1]).map((skill, index) => (
-            <div key={index} className="max-w-250px">
+      )}
+
+      {loggedIn && visibilty && <Edit updateId={updateId} />}
+      {loggedIn && rmAlert && (
+        <RemoveData docId={rmDocId} clId={collectionId} />
+      )}
+
+      <div className="flex flex-wrap justify-center items-baseline w-full mt-5">
+        {skillData.map((skill, index) => (
+          <div key={index}>
+            {skill.icon && (
+              <img src={skill.icon} alt="skill" className="h-16 m-2" />
+            )}
+          </div>
+        ))}
+      </div>
+      {loggedIn && (
+        <div className="flex justify-center w-full my-5">
+          <button onClick={() => setVisibilty(true)}>
+            <Button>Add New Skill</Button>
+          </button>
+        </div>
+      )}
+      <h2 className="text-3xl mt-20 font-bold">Technical Skills</h2>
+      <div className="flex flex-wrap gap-5 justify-center items-center w-full my-5">
+        {Object.keys(technical).map((skill, index) => (
+          <div key={index} className="max-w-250px">
+            {technical[skill].length > 0 && (
               <Card key={index}>
                 <div className="flex flex-col items-center justify-center min-h-[200px]">
                   <h1 className="text-xl font-bold text-center md:text-lg lg:text-xl">
                     {skill}
                   </h1>
                   <ul className="list-disc w-full px-3 mt-5">
-                    {skillData[1][skill].map((skill, index) => (
+                    {technical[skill].map((tech, index) => (
                       <div key={index}>
-                        <li className="">{skill}</li>
+                        <li className="">
+                          {tech.name}
+                          {loggedIn && (
+                            <div className="flex justify-end gap-3">
+                              <button
+                                className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
+                                onClick={() => removeData(tech.$id)}
+                              >
+                                Remove
+                              </button>
+                              <button
+                                className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
+                                onClick={() => updateData(tech.$id)}
+                              >
+                                Update
+                              </button>
+                            </div>
+                          )}
+                        </li>
                       </div>
                     ))}
                   </ul>
                 </div>
               </Card>
-            </div>
-          ))}
-        </div>
-        <h2 className="text-3xl mt-20 font-bold">Language Skills</h2>
-        <ul className="w-full my-5 justify-center list-disc flex gap-10 flex-wrap">
-          {skillData[2].map((skill, index) => (
-            <li key={index}>
-              <span className="text-sm font-bold text-center md:text-base lg:text-lg">
-                {skill}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </section>
+            )}
+          </div>
+        ))}
+      </div>
+      <h2 className="text-3xl mt-20 font-bold">Language Skills</h2>
+      <ul className="w-full my-5 justify-center list-disc flex gap-10 flex-wrap">
+        {languages.map((skill, index) => (
+          <li key={index}>
+            <span className="text-sm font-bold text-center md:text-base lg:text-lg">
+              {skill.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 

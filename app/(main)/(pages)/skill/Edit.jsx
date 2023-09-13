@@ -5,15 +5,13 @@ import Card from "@/components/basic/Card";
 
 const Edit = ({ updateId }) => {
   // is update also contains the document id of the latest news which is to be updated.
-  const [achievments, setAchievments] = useState({
-    date: "",
-    descption: "",
-    youtubeLink: null,
-    posterLink: null,
-    type: null,
+  const [skill, setSkill] = useState({
+    name: "",
+    type: "",
+    icon: null,
   });
 
-  let collectionId = "64fdd79d8317edfbf6c2";
+  let collectionId = "65017257bc6662f0fd4b";
   const [error, setError] = useState(null);
   const [visibilty, setVisibilty] = useState("fixed");
 
@@ -22,7 +20,7 @@ const Edit = ({ updateId }) => {
       appwriteService
         .readData(collectionId, updateId)
         .then((res) => {
-          setAchievments(res);
+          setSkill(res);
         })
         .catch((error) => {
           setError(error.message);
@@ -30,39 +28,29 @@ const Edit = ({ updateId }) => {
     }, []);
   }
 
-  const addAchievments = async (e) => {
+  const addSkill = async (e) => {
     e.preventDefault();
     try {
-      await appwriteService
-        .createData(collectionId, achievments)
-        .then((res) => {
-          setVisibilty("hidden");
-          window.location.reload();
-        });
+      await appwriteService.createData(collectionId, skill).then((res) => {
+        setVisibilty("hidden");
+        window.location.reload();
+      });
     } catch (error) {
       setError(error.message);
     }
   };
 
-  const updateActivities = async (e) => {
+  const updateSkill = async (e) => {
     e.preventDefault();
-    if (achievments.youtubeLink === "") {
-      achievments.youtubeLink = null;
-    }
-    if (achievments.posterLink === "") {
-      achievments.posterLink = null;
-    }
-    if (achievments.type === "") {
-      achievments.type = null;
+    if (skill.icon === "") {
+      skill.icon = null;
     }
     try {
       await appwriteService
         .updateData(collectionId, updateId, {
-          date: achievments.date,
-          descption: achievments.descption,
-          youtubeLink: achievments.youtubeLink,
-          posterLink: achievments.posterLink,
-          type: achievments.type,
+          name: skill.name,
+          type: skill.type,
+          icon: skill.icon,
         })
         .then((res) => {
           setVisibilty("hidden");
@@ -86,7 +74,7 @@ const Edit = ({ updateId }) => {
       <Card>
         <div className="flex gap-y-4 flex-wrap">
           <h2 className="text-2xl font-bold text-center leading-tight w-full">
-            Achievements Section
+            Skill Section
           </h2>
           {error && (
             <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
@@ -95,7 +83,7 @@ const Edit = ({ updateId }) => {
             </div>
           )}
           <form
-            // onSubmit={updateId ? updateActivities : addAchievments}
+            // onSubmit={updateId ? updateSkill : addSkill}
             className="w-full"
           >
             <div className="space-y-5">
@@ -104,63 +92,26 @@ const Edit = ({ updateId }) => {
                   <input
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black"
                     type="text"
-                    value={achievments.date}
+                    value={skill.name}
                     onChange={(e) =>
-                      setAchievments((prev) => ({
+                      setSkill((prev) => ({
                         ...prev,
-                        date: e.target.value,
+                        name: e.target.value,
                       }))
                     }
-                    placeholder="Date"
+                    placeholder="Enter the name of the skill"
                     required
                   />
 
-                  <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
-                    type="text"
-                    value={achievments.descption}
-                    onChange={(e) =>
-                      setAchievments((prev) => ({
-                        ...prev,
-                        descption: e.target.value,
-                      }))
-                    }
-                    placeholder="Description"
-                    required
-                  />
 
-                  <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
-                    type="url"
-                    value={achievments.youtubeLink}
-                    onChange={(e) =>
-                      setAchievments((prev) => ({
-                        ...prev,
-                        youtubeLink: e.target.value,
-                      }))
-                    }
-                    placeholder="Youtube Link"
-                  />
-
-                  <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
-                    type="url"
-                    value={achievments.posterLink}
-                    onChange={(e) =>
-                      setAchievments((prev) => ({
-                        ...prev,
-                        posterLink: e.target.value,
-                      }))
-                    }
-                    placeholder="Poster Link"
-                  />
+                  
                   <select
                     className="flex h-10 w-full rounded-md px-3 py-2 text-black bg-white"
                     name="type"
                     id=""
-                    value={achievments.type}
+                    value={skill.type}
                     onChange={(e) =>
-                      setAchievments((prev) => ({
+                      setSkill((prev) => ({
                         ...prev,
                         type: e.target.value,
                       }))
@@ -168,17 +119,37 @@ const Edit = ({ updateId }) => {
                     required
                   >
                     <option value="">Select Type</option>
-                    <option value="award">Award</option>
-                    <option value="certification">Certification</option>
+                    <option value="Programing Languages">Programing Languages</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Database">Database</option>
+                    <option value="Expert">Expert</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Beginner">Beginner</option>
+                    <option value="Software">Software</option>
+                    <option value="Others">Others</option>
+                    <option value="Language">Language</option>
                   </select>
+                  <input
+                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    type="url"
+                    value={skill.icon}
+                    onChange={(e) =>
+                      setSkill((prev) => ({
+                        ...prev,
+                        icon: e.target.value,
+                      }))
+                    }
+                    placeholder="Enter the icon url"
+                    
+                  />
                 </div>
 
                 <div className="flex items-center flex-wrap justify-evenly p-5 space-x-3">
                   <Button>
                     {updateId ? (
-                      <button onClick={updateActivities}>Update</button>
+                      <button onClick={updateSkill}>Update</button>
                     ) : (
-                      <button onClick={addAchievments}>Add</button>
+                      <button onClick={addSkill}>Add</button>
                     )}
                   </Button>
                   <Button>
