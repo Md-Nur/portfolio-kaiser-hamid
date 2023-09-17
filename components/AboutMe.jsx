@@ -6,8 +6,8 @@ import AboutMeForm from "@/components/forms/AboutMeForm";
 
 const AboutMe = () => {
   const [aboutMeData, setAboutMeData] = useState("Loading...");
-  let collectionId = conf.aboutMeCollectionId;
-  let documentId = "64f79a9a675c6fddd8f2";
+  let collectionId = conf.collections.aboutMe;
+  let documentId = conf.aboutMeDocumentId;
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [error, setError] = useState(null);

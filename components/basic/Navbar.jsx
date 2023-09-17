@@ -16,7 +16,7 @@ function Navbar() {
 
   useEffect(() => {
     appwriteService
-      .getAllData(conf.navCollectionId)
+      .getAllData(conf.collections.nav)
       .then((res) => {
         setNavLinks(res.documents);
       })

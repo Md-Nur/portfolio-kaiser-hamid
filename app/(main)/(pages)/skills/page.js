@@ -2,7 +2,7 @@
 import Card from "@/components/basic/Card";
 import appwriteService from "@/appwrite/config";
 import { useState, useEffect } from "react";
-import Loader from "@/components/basic/Loader";
+import conf from "@/conf/config";
 import Button from "@/components/basic/Button";
 import Edit from "./Edit";
 import RemoveData from "@/components/forms/RemoveData";
@@ -15,7 +15,7 @@ const page = () => {
   const [rmAlert, setRmAlert] = useState(false);
   const [updateId, setUpdateId] = useState(null);
   const [rmDocId, setRmDocId] = useState(null);
-  const collectionId = "65017257bc6662f0fd4b";
+  const collectionId = conf.collections.skills;
   let technical = {
     "Programing Languages": [],
     "Web Development": [],

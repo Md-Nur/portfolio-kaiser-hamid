@@ -6,6 +6,7 @@ import Button from "@/components/basic/Button";
 import Edit from "./Edit";
 import RemoveData from "@/components/forms/RemoveData";
 import { BsFillChatSquareQuoteFill } from "react-icons/bs";
+import conf from "@/conf/config";
 
 const page = () => {
   const [activitiesData, setActivitiesData] = useState(null);
@@ -15,7 +16,7 @@ const page = () => {
   const [rmAlert, setRmAlert] = useState(false);
   const [updateId, setUpdateId] = useState(null);
   const [rmDocId, setRmDocId] = useState(null);
-  const collectionId = "64ff687d550f62a435ff";
+  const collectionId = conf.collections.activities;
 
   let coCurricularData = [];
   let quotesData = [];

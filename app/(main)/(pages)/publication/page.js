@@ -6,6 +6,7 @@ import Loader from "@/components/basic/Loader";
 import Button from "@/components/basic/Button";
 import Edit from "./Edit";
 import RemoveData from "@/components/forms/RemoveData";
+import conf from "@/conf/config";
 
 const page = () => {
   const [publicationData, setPublicationData] = useState(null);
@@ -15,7 +16,7 @@ const page = () => {
   const [rmAlert, setRmAlert] = useState(false);
   const [updateId, setUpdateId] = useState(null);
   const [rmDocId, setRmDocId] = useState(null);
-  const collectionId = "64ff7fa8ea9a062831d3";
+  const collectionId = conf.collections.publication;
 
   useEffect(() => {
     appwriteService

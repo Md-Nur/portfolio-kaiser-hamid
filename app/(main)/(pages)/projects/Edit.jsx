@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import appwriteService from "@/appwrite/config";
 import Button from "@/components/basic/Button";
 import Card from "@/components/basic/Card";
+import conf from "@/conf/config";
 
 const Edit = ({ updateId }) => {
   // is update also contains the document id of the latest news which is to be updated.
@@ -18,7 +19,7 @@ const Edit = ({ updateId }) => {
     youtubeFrame: "",
   });
 
-  let collectionId = "650084f754b90c224c4a";
+  let collectionId = conf.collections.project;
   const [error, setError] = useState(null);
   const [visibilty, setVisibilty] = useState("fixed");
   let url;

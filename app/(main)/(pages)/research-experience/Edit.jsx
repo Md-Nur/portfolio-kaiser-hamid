@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import appwriteService from "@/appwrite/config";
 import Button from "@/components/basic/Button";
 import Card from "@/components/basic/Card";
+import conf from "@/conf/config";
 
 const Edit = ({ updateId }) => {
   // is update also contains the document id of the latest news which is to be updated.
@@ -21,7 +22,7 @@ const Edit = ({ updateId }) => {
     reports: "",
   });
 
-  let collectionId = "6500a913f193396da1f8";
+  let collectionId = conf.collections.researchXp;
   const [error, setError] = useState(null);
   const [visibilty, setVisibilty] = useState("fixed");
   if (updateId) {
