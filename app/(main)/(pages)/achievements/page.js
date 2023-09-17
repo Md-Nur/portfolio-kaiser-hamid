@@ -9,7 +9,7 @@ import conf from "@/conf/config";
 
 const page = () => {
   const [achievementData, setAchievementData] = useState(null);
-  const collectionId = conf.achievementsCollectionId;
+  const collectionId = conf.collections.achievements;
   let awardData = [];
   let certificationData = [];
   const [error, setError] = useState(null);
