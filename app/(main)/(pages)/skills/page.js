@@ -151,6 +151,22 @@ const page = () => {
           <li key={index}>
             <span className="text-sm font-bold text-center md:text-base lg:text-lg">
               {skill.name}
+              {loggedIn && (
+                <div className="flex justify-end gap-3">
+                  <button
+                    className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
+                    onClick={() => removeData(skill.$id)}
+                  >
+                    Remove
+                  </button>
+                  <button
+                    className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
+                    onClick={() => updateData(skill.$id)}
+                  >
+                    Update
+                  </button>
+                </div>
+              )}
             </span>
           </li>
         ))}

@@ -28,7 +28,7 @@ const ProfileCard = () => {
       <Card>
         <div className="flex gap-y-4 flex-wrap">
           <div className="flex gap-y-6 flex-wrap">
-            <div className="flex w-full gap-x-4 items-center">
+            <div className="flex gap-x-4 items-center">
               <div className="shrink-0 w-20">
                 <Avatar width={100} height={100} shadowSize="shadow-md" />
               </div>
@@ -46,6 +46,7 @@ const ProfileCard = () => {
               <p className="font-semibold">{user.email}</p>
             </div>
           </div>
+
           <div className="w-full flex justify-center">
             <Button>
               <Link href={"/logout"}>Logout</Link>

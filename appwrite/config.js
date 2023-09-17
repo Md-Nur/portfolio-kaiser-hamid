@@ -1,10 +1,9 @@
 import conf from "@/conf/config.js";
-import { Client, Account, ID, Databases } from "appwrite";
+import { Client, Account, ID, Databases, Query } from "appwrite";
 
 const appwriteClient = new Client()
   .setEndpoint(conf.appwriteUrl)
   .setProject(conf.appwriteProjectId);
-
 
 const databaseId = conf.appwriteDatabaseId;
 
@@ -13,7 +12,6 @@ export const account = new Account(appwriteClient);
 export class AppwriteService {
   async login(email, password) {
     try {
-      console.log("Login success");
       return await account.createEmailSession(email, password);
     } catch (e) {
       throw e;
@@ -32,7 +30,7 @@ export class AppwriteService {
     try {
       return await account.get();
     } catch (e) {
-      console.log("Get current user error", e);
+      throw e;
     }
   }
 
@@ -41,7 +39,7 @@ export class AppwriteService {
       console.log("Logout success");
       return await account.deleteSession("current");
     } catch (e) {
-      console.log("Logout error", e);
+      throw e;
     }
   }
   async readData(collectionId, documentId) {
@@ -49,7 +47,7 @@ export class AppwriteService {
       const database = new Databases(appwriteClient);
       return await database.getDocument(databaseId, collectionId, documentId);
     } catch (e) {
-      console.log("Read database error", e);
+      throw e;
     }
   }
   async updateData(collectionId, documentId, data) {
@@ -62,7 +60,7 @@ export class AppwriteService {
         data
       );
     } catch (e) {
-      return "Update database error", e;
+      throw e;
     }
   }
 
@@ -80,11 +78,12 @@ export class AppwriteService {
     }
   }
 
-
   async getAllData(collectionId) {
     try {
       const database = new Databases(appwriteClient);
-      return await database.listDocuments(databaseId, collectionId);
+      return await database.listDocuments(databaseId, collectionId, [
+        Query.limit(100),
+      ]);
     } catch (e) {
       throw e;
     }

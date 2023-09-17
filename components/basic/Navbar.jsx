@@ -1,63 +1,31 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSolidUser } from "react-icons/bi";
 import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
-const navLinks = [
-  {
-    name: "Home",
-    link: "/",
-  },
-  {
-    name: "Education",
-    link: "/education",
-  },
-  {
-    name: "Publication",
-    link: "/publication",
-  },
-  {
-    dropDown: true,
-    name: "Experience",
-    subLinks: [
-      {
-        name: "Research Experience",
-        link: "/research-experience",
-      },
-      {
-        name: "Professional Experience",
-        link: "/professional-experience",
-      },
-    ],
-  },
-  {
-    name: "Teaching",
-    link: "/teaching",
-  },
-  {
-    name: "Skills",
-    link: "/skill",
-  },
-  {
-    name: "Projects",
-    link: "/projects",
-  },
-  {
-    name: "Achievements",
-    link: "/achievements",
-  },
-  {
-    name: "Activities",
-    link: "/activites",
-  },
-];
+import appwriteService from "@/appwrite/config";
+import conf from "@/conf/config";
 
 function Navbar() {
   const [dropdownDisplay, setDropdownDisplay] = useState("hidden");
   const [modeIcon, setModeIcon] = useState("lightMode");
   const [menuDisplay, setMenuDisplay] = useState("hidden");
+  const [navLinks, setNavLinks] = useState([]);
+
+  useEffect(() => {
+    appwriteService
+      .getAllData(conf.navCollectionId)
+      .then((res) => {
+        setNavLinks(res.documents);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+  , [navLinks]);
+
 
   const handleMode = () => {
     if (modeIcon === "darkMode") {
@@ -114,10 +82,10 @@ function Navbar() {
                         <Link
                           className="hover:underline block"
                           aria-current="page"
-                          href={subLink.link}
+                          href={subLink}
                           key={index}
                         >
-                          {subLink.name}
+                          {link.subNames[index]}
                         </Link>
                       ))}
                     </div>
@@ -169,10 +137,10 @@ function Navbar() {
                     <Link
                       className="hover:underline hover:bg-color4 dark:hover:bg-color1 block"
                       aria-current="page"
-                      href={subLink.link}
+                      href={subLink}
                       key={index}
                     >
-                      {subLink.name}
+                      {link.subNames[index]}
                     </Link>
                   ))}
                 </li>

@@ -5,10 +5,11 @@ import appwriteService from "@/appwrite/config";
 import Button from "@/components/basic/Button";
 import Edit from "./Edit";
 import RemoveData from "@/components/forms/RemoveData";
+import conf from "@/conf/config";
 
 const page = () => {
   const [achievementData, setAchievementData] = useState(null);
-  const collectionId = "64fdd79d8317edfbf6c2";
+  const collectionId = conf.achievementsCollectionId;
   let awardData = [];
   let certificationData = [];
   const [error, setError] = useState(null);
@@ -109,21 +110,21 @@ const page = () => {
                 </a>
               ) : null}
               {loggedIn && (
-              <div className="flex justify-end gap-3">
-                <button
-                  className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
-                  onClick={() => removeData(award.$id)}
-                >
-                  Remove
-                </button>
-                <button
-                  className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
-                  onClick={() => updateData(award.$id)}
-                >
-                  Update
-                </button>
-              </div>
-            )}
+                <div className="flex justify-end gap-3">
+                  <button
+                    className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
+                    onClick={() => removeData(award.$id)}
+                  >
+                    Remove
+                  </button>
+                  <button
+                    className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
+                    onClick={() => updateData(award.$id)}
+                  >
+                    Update
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -161,21 +162,21 @@ const page = () => {
                 </a>
               ) : null}
               {loggedIn && (
-              <div className="flex justify-end gap-3">
-                <button
-                  className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
-                  onClick={() => removeData(certification.$id)}
-                >
-                  Remove
-                </button>
-                <button
-                  className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
-                  onClick={() => updateData(certification.$id)}
-                >
-                  Update
-                </button>
-              </div>
-            )}
+                <div className="flex justify-end gap-3">
+                  <button
+                    className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
+                    onClick={() => removeData(certification.$id)}
+                  >
+                    Remove
+                  </button>
+                  <button
+                    className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
+                    onClick={() => updateData(certification.$id)}
+                  >
+                    Update
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </div>

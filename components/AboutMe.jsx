@@ -1,12 +1,12 @@
 import appwriteService from "@/appwrite/config";
 import { useEffect, useState } from "react";
 import Button from "./basic/Button";
-import useAuth from "@/context/useAuth";
+import conf from "@/conf/config";
 import AboutMeForm from "@/components/forms/AboutMeForm";
 
 const AboutMe = () => {
   const [aboutMeData, setAboutMeData] = useState("Loading...");
-  let collectionId = "64f798f22a16191eda71";
+  let collectionId = conf.aboutMeCollectionId;
   let documentId = "64f79a9a675c6fddd8f2";
 
   const [loggedIn, setLoggedIn] = useState(false);

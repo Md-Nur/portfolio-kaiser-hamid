@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import appwriteService from "@/appwrite/config";
 import Button from "@/components/basic/Button";
 import Card from "@/components/basic/Card";
+import conf from "@/conf/config";
 
 const Edit = ({ updateId }) => {
   // is update also contains the document id of the latest news which is to be updated.
@@ -13,22 +14,9 @@ const Edit = ({ updateId }) => {
     type: null,
   });
 
-  let collectionId = "64fdd79d8317edfbf6c2";
+  let collectionId = conf.achievementsCollectionId;
   const [error, setError] = useState(null);
   const [visibilty, setVisibilty] = useState("fixed");
-
-  if (updateId) {
-    useEffect(() => {
-      appwriteService
-        .readData(collectionId, updateId)
-        .then((res) => {
-          setAchievments(res);
-        })
-        .catch((error) => {
-          setError(error.message);
-        });
-    }, []);
-  }
 
   const addAchievments = async (e) => {
     e.preventDefault();
@@ -44,7 +32,7 @@ const Edit = ({ updateId }) => {
     }
   };
 
-  const updateActivities = async (e) => {
+  const updateAchievement = async (e) => {
     e.preventDefault();
     if (achievments.youtubeLink === "") {
       achievments.youtubeLink = null;
@@ -73,6 +61,20 @@ const Edit = ({ updateId }) => {
     }
   };
 
+  useEffect(() => {
+    if (updateId) {
+      appwriteService
+        .readData(collectionId, updateId)
+        .then((res) => {
+          setAchievments(res);
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
+    }
+    setVisibilty("fixed");
+  }, []);
+
   const handleClose = () => {
     setVisibilty("hidden");
     window.location.reload();
@@ -94,8 +96,8 @@ const Edit = ({ updateId }) => {
               <span className="block sm:inline"> {error}</span>
             </div>
           )}
-          <form
-            // onSubmit={updateId ? updateActivities : addAchievments}
+          <div
+            // onSubmit={updateId ? updateAchievement : addAchievments}
             className="w-full"
           >
             <div className="space-y-5">
@@ -176,7 +178,7 @@ const Edit = ({ updateId }) => {
                 <div className="flex items-center flex-wrap justify-evenly p-5 space-x-3">
                   <Button>
                     {updateId ? (
-                      <button onClick={updateActivities}>Update</button>
+                      <button onClick={updateAchievement}>Update</button>
                     ) : (
                       <button onClick={addAchievments}>Add</button>
                     )}
@@ -187,7 +189,7 @@ const Edit = ({ updateId }) => {
                 </div>
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </Card>
     </div>
