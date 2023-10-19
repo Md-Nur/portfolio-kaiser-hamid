@@ -15,12 +15,12 @@ const Hero = () => {
     >
       <div className="py-20 flex flex-col items-center gap-3">
         <h1 className="text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-color1 to-red-700 dark:from-color4 dark:to-red-300">
-          Kaiser Hamid
+          Md. Nur E Alam Siddiquee
         </h1>
         <em className="text-sm sm:text-2xl">
           Final year undergrad student at{" "}
-          <a href="https://www.buet.ac.bd/web/" className=" " target="_blank">
-            BUET
+          <a href="https://www.ru.ac.bd/" className=" " target="_blank">
+            University of Rajshahi
           </a>
         </em>
         <p className="text-sm sm:text-xl">
