@@ -5,9 +5,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title:
-    "Kaiser Hamid - Portfolio || Kaiser Hamid is a undergraduate student at Bangladesh University of Engineering and Technology.",
+    "Md. Nur E Alam Siddiquee - Portfolio || Md. Nur E Alam Siddiquee is a undergraduate student at University of Rajshahi",
   description:
-    "Welcome to the website of Kaiser Hamid, a undergraduate student at Bangladesh University of Engineering and Technology.",
+    "Welcome to the website of Md. Nur E Alam Siddiquee, a undergraduate student at University of Rajshahi",
 };
 
 export default function RootLayout({ children }) {
