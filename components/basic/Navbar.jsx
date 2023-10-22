@@ -56,7 +56,8 @@ function Navbar() {
     <header className=" bg-color3 dark:bg-color2 text-color1 dark:text-color4">
       <nav className="fixed z-20 w-screen flex justify-evenly bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
         <div className="text-lg font-bold">
-          <Link href="/">Kaiser</Link>
+          <Link href="/"><img src="/logo.png" alt="logo" className="h-7" /></Link>
+        
         </div>
 
         <div className="min-w-[800px] text-sm font-bold hidden lg:block max-w-[1000px]">

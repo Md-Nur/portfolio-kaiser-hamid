@@ -18,7 +18,7 @@ const Hero = () => {
           Md. Nur E Alam Siddiquee
         </h1>
         <em className="text-sm sm:text-2xl">
-          Final year undergrad student at{" "}
+          Undergrad student at{" "}
           <a href="https://www.ru.ac.bd/" className=" " target="_blank">
             University of Rajshahi
           </a>
@@ -27,7 +27,7 @@ const Hero = () => {
           Pronouns: <span>He/Him/His</span>
         </p>
         <a
-          href="mailto:kaiserhamid715@gmail.com"
+          href="mailto:md.nurealamsiddiquee2004@gmail.com"
           className="flex gap-3 items-center text-sm sm:text-xl"
         >
           <HiMail
@@ -35,7 +35,7 @@ const Hero = () => {
             aria-hidden="true"
           />
           <span>Email: </span>
-          <span className=" ">kaiserhamid715@gmail.com</span>
+          <span className=" ">md.nurealamsiddiquee2004@gmail.com</span>
         </a>
 
         <a
@@ -46,19 +46,19 @@ const Hero = () => {
           Download CV
         </a>
         <div className="flex gap-3">
-          <a href="https://facbook.com" target="_blank">
+          <a href="https://www.facebook.com/Md.Nur9211" target="_blank">
             <FaFacebook className="text-3xl text-color1 dark:text-color4 hover:text-color2 dark:hover:text-color3 transition duration-300 ease-in-out" />
           </a>
-          <a href="https://twitter.com" target="_blank">
+          <a href="https://twitter.com/MdNur9211" target="_blank">
             <FaTwitter className="text-3xl text-color1 dark:text-color4 hover:text-color2 dark:hover:text-color3 transition duration-300 ease-in-out" />
           </a>
-          <a href="https://linkedin.com" target="_blank">
+          <a href="https://linkedin.com/in/mdnur9211/" target="_blank">
             <FaLinkedin className="text-3xl text-color1 dark:text-color4 hover:text-color2 dark:hover:text-color3 transition duration-300 ease-in-out" />
           </a>
-          <a href="https://youtube.com" target="_blank">
+          <a href="https://www.youtube.com/@TheDeenShorts" target="_blank">
             <FaYoutube className="text-3xl text-color1 dark:text-color4 hover:text-color2 dark:hover:text-color3 transition duration-300 ease-in-out" />
           </a>
-          <a href="https://github.com" target="_blank">
+          <a href="https://github.com/Md-Nur" target="_blank">
             <FaGithub className="text-3xl text-color1 dark:text-color4 hover:text-color2 dark:hover:text-color3 transition duration-300 ease-in-out" />
           </a>
         </div>
