@@ -2,18 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-/* .myShadow {
-  filter: drop-shadow(3px 1px 10px #00fffb);
-}
-.myDarkShadow{
-  filter: drop-shadow(0 0 0.75rem #000000);
-
-} */
-
-/* a{
-  text-decoration: none;
-  color: red;
-  font-weight: 600;
-  font-size: 1.2rem;
-  transition: all 0.3s ease-in-out;
-} */
