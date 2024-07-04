@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import appwriteService from "@/appwrite/config";
-import Button from "@/components/basic/Button";
-import Card from "@/components/basic/Card";
 import conf from "@/conf/config";
 
 const Edit = ({ data }) => {
@@ -48,12 +46,12 @@ const Edit = ({ data }) => {
       <button
         className="btn btn-info btn-sm"
         onClick={() =>
-          document.getElementById(`addUpdate${data?.$id}`).showModal()
+          document.getElementById(`skill-${data?.$id}`).showModal()
         }
       >
         {data ? "Update" : "Add"}
       </button>
-      <dialog id={`addUpdate${data?.$id}`} className="modal">
+      <dialog id={`skill-${data?.$id}`} className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <form method="dialog">
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
