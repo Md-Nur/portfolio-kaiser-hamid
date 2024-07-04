@@ -93,7 +93,7 @@ const Edit = ({ updateId }) => {
               <div>
                 <div className="mt-2 space-y-5">
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={publication.title}
                     onChange={(e) =>
@@ -106,7 +106,7 @@ const Edit = ({ updateId }) => {
                     required
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={publication.description}
                     onChange={(e) =>
@@ -118,7 +118,7 @@ const Edit = ({ updateId }) => {
                     placeholder="Description"
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="url"
                     value={publication.asset}
                     onChange={(e) =>

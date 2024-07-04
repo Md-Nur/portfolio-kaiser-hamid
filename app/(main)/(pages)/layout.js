@@ -3,7 +3,7 @@ import appwriteService from "@/appwrite/config";
 import Loader from "@/components/basic/Loader";
 import MainContainer from "@/components/basic/MainContainer";
 import { AuthProvider } from "@/context/authContext";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const ProtectedLayout = ({ children }) => {
   const [authStatus, setAuthStatus] = useState(false);

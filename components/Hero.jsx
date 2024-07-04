@@ -1,28 +1,22 @@
 import { HiMail } from "react-icons/hi";
-import {
-  FaFacebook,
-  FaTwitter,
-  FaGithub,
-  FaLinkedin,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
 import Avatar from "@/components/Avatar";
 const Hero = () => {
   return (
     <section
       id="hero"
-      className="flex flex-wrap px-3 justify-around bg-gradient-to-b from-color3 to-color4 dark:from-color2 dark:to-color1 text-color1 dark:text-color4 items-center py-10"
+      className="flex flex-wrap px-3 justify-around bg-gradient-to-b w-full from-base-300 to-base-100 items-center py-10"
     >
       <div className="py-20 flex flex-col items-center gap-3">
-        <h1 className="text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-color1 to-red-700 dark:from-color4 dark:to-red-300">
+        <h1 className="text-3xl sm:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-base-content to-error">
           Md. Nur E Alam Siddiquee
         </h1>
-        <em className="text-sm sm:text-2xl">
+        <strong className="text-sm sm:text-2xl">
           Undergrad student at{" "}
           <a href="https://www.ru.ac.bd/" className=" " target="_blank">
             University of Rajshahi
           </a>
-        </em>
+        </strong>
         <p className="text-sm sm:text-xl">
           Pronouns: <span>He/Him/His</span>
         </p>
@@ -40,7 +34,7 @@ const Hero = () => {
 
         <a
           href="cv.pdf"
-          className="p-3 w-36 rounded-full text-center  bg-color2 dark:bg-color3 text-color4 dark:text-color1 hover:bg-color1 dark:hover:bg-color4 transition duration-300 ease-in-out"
+          className="btn btn-primary"
           download
         >
           Download CV
@@ -54,9 +48,6 @@ const Hero = () => {
           </a>
           <a href="https://linkedin.com/in/mdnur9211/" target="_blank">
             <FaLinkedin className="text-3xl text-color1 dark:text-color4 hover:text-color2 dark:hover:text-color3 transition duration-300 ease-in-out" />
-          </a>
-          <a href="https://www.youtube.com/@TheDeenShorts" target="_blank">
-            <FaYoutube className="text-3xl text-color1 dark:text-color4 hover:text-color2 dark:hover:text-color3 transition duration-300 ease-in-out" />
           </a>
           <a href="https://github.com/Md-Nur" target="_blank">
             <FaGithub className="text-3xl text-color1 dark:text-color4 hover:text-color2 dark:hover:text-color3 transition duration-300 ease-in-out" />

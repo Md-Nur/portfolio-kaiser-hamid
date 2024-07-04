@@ -1,17 +1,13 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { AiFillCaretDown } from "react-icons/ai";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { BiSolidUser } from "react-icons/bi";
-import { BsFillSunFill, BsFillMoonFill } from "react-icons/bs";
+import { MdMenu } from "react-icons/md";
 import appwriteService from "@/appwrite/config";
 import conf from "@/conf/config";
+import Image from "next/image";
+import logo from "@/public/logo.png";
 
-function Navbar() {
-  const [dropdownDisplay, setDropdownDisplay] = useState("hidden");
-  const [modeIcon, setModeIcon] = useState("lightMode");
-  const [menuDisplay, setMenuDisplay] = useState("hidden");
+function Navbar({ children }) {
   const [navLinks, setNavLinks] = useState([]);
 
   useEffect(() => {
@@ -23,37 +19,98 @@ function Navbar() {
       .catch((err) => {
         console.error(err);
       });
-  }
-  , [navLinks]);
-
-
-  const handleMode = () => {
-    if (modeIcon === "darkMode") {
-      document.getElementById("mainHtml").classList.remove("dark");
-      setModeIcon("lightMode");
-    } else {
-      document.getElementById("mainHtml").classList.add("dark");
-      setModeIcon("darkMode");
-    }
-  };
-  const handleDropdown = () => {
-    if (dropdownDisplay === "hidden") {
-      setDropdownDisplay("block");
-    } else {
-      setDropdownDisplay("hidden");
-    }
-  };
-
-  const handleMenu = () => {
-    if (menuDisplay === "hidden") {
-      setMenuDisplay("block");
-    } else {
-      setMenuDisplay("hidden");
-    }
-  };
+  }, [navLinks]);
 
   return (
-    <header className=" bg-color3 dark:bg-color2 text-color1 dark:text-color4">
+    <div className="drawer">
+      <input id="main-nav" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col">
+        {/* Navbar */}
+        <nav className="navbar bg-base-300 w-full sticky top-0 lg:px-20">
+          <div className="flex-none lg:hidden">
+            <label
+              htmlFor="main-nav"
+              aria-label="open sidebar"
+              className="btn btn-square btn-ghost"
+            >
+              <MdMenu className="h-6 w-6" />
+            </label>
+          </div>
+          <div className="mx-2 flex-1 px-2">
+            <Image src={logo} height={100} width={100} className="h-7 w-auto" />
+            <input
+              type="checkbox"
+              value="night"
+              className="toggle theme-controller col-span-2 col-start-1 row-start-1 border-sky-400 bg-amber-300 [--tglbg:theme(colors.sky.500)] checked:border-blue-800 checked:bg-blue-300 checked:[--tglbg:theme(colors.blue.900)] mx-2"
+            />
+          </div>
+          <div className="hidden flex-none lg:block">
+            <ul className="menu menu-horizontal">
+              {/* Navbar menu content here */}
+              {navLinks.map((link, index) =>
+                link.dropDown ? (
+                  <li key={index}>
+                    <details>
+                      <summary>{link.name}</summary>
+                      <ul className="p-2">
+                        {link.subLinks.map((subLink, index) => (
+                          <li key={index}>
+                            <Link href={subLink}>{link.subNames[index]}</Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  </li>
+                ) : (
+                  <li key={index}>
+                    <Link href={link.link}>{link.name}</Link>
+                  </li>
+                )
+              )}
+            </ul>
+          </div>
+        </nav>
+        {/* Page content here */}
+        <main className="w-full min-h-[calc(100vh-260px)] flex justify-center items-center flex-col">
+          {children}
+        </main>
+      </div>
+      <div className="drawer-side">
+        <label
+          htmlFor="main-nav"
+          aria-label="close sidebar"
+          className="drawer-overlay"
+        ></label>
+        <ul className="menu bg-base-200 min-h-full w-80 p-4">
+          {/* Sidebar content here */}
+          {navLinks.map((link, index) =>
+            link.dropDown ? (
+              <li key={index}>
+                <summary>{link.name}</summary>
+                <ul className="p-2">
+                  {link.subLinks.map((subLink, index) => (
+                    <li key={index}>
+                      <Link href={subLink}>{link.subNames[index]}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ) : (
+              <li key={index}>
+                <Link href={link.link}>{link.name}</Link>
+              </li>
+            )
+          )}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default Navbar;
+
+{
+  /* <header className=" bg-color3 dark:bg-color2 text-color1 dark:text-color4">
       <nav className="fixed z-20 w-screen flex justify-evenly bg-color3 dark:bg-color2 text-color1 dark:text-color4 px-5 py-5 items-center">
         <div className="text-lg font-bold">
           <Link href="/"><img src="/logo.png" alt="logo" className="h-7" /></Link>
@@ -125,7 +182,7 @@ function Navbar() {
           <GiHamburgerMenu className="h-6 w-6" />
         </div>
       </nav>
-      <div className="h-16">{/* buffer space */}</div>
+      <div className="h-16"></div>
       <div
         className={`w-full fixed z-40 bg-color3 dark:bg-color2 text-color1 dark:text-color4  bg-opacity-80 dark:bg-opacity-80 ${menuDisplay} lg:hidden`}
       >
@@ -166,10 +223,7 @@ function Navbar() {
         </ul>
       </div>
       <div className={`h-80 ${menuDisplay} md:hidden`}>
-        {/* buffer space */}
+        
       </div>
-    </header>
-  );
+    </header> */
 }
-
-export default Navbar;

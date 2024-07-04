@@ -19,8 +19,6 @@ const navAllNames = [
 const UpdateNav = () => {
   const [navLinks, setNavLinks] = useState([]);
   const [error, setError] = useState(null);
-  const [rmAlert, setRmAlert] = useState(false);
-  const [rmDocId, setRmDocId] = useState(null);
   const [freshNavNames, setFreshNavNames] = useState([]);
   const [data, setData] = useState({
     name: "",
@@ -48,11 +46,6 @@ const UpdateNav = () => {
       });
   }, [navLinks]);
 
-  const removeData = (docId) => {
-    setRmDocId(docId);
-    setRmAlert(true);
-  };
-
   const handleAdd = () => {
     console.info(data);
     appwriteService
@@ -71,17 +64,15 @@ const UpdateNav = () => {
       <Card>
         {error && <div className="text-red-500">{error}</div>}
         <h1 className="text-2xl text-center font-bold">Update Navigation</h1>
-        {rmAlert && <RemoveData docId={rmDocId} clId={collectionId} />}
+
         <div className="flex flex-wrap gap-2 justify-around my-5">
           <div className="flex flex-col gap-2">
             <h3 className="text-xl font-bold text-center">
               Add New Elements to the navbar
             </h3>
-            <div
-              className="flex justify-center space-x-5 items-baseline space-y-5"
-            >
+            <div className="flex justify-center space-x-5 items-baseline space-y-5">
               <label className="" htmlFor="name">
-                Name: 
+                Name:
               </label>
               <select
                 name="name"
@@ -123,13 +114,8 @@ const UpdateNav = () => {
             <ul className="desc">
               {navLinks.map((link, index) => (
                 <li key={index}>
-                 {index+1}. <Link href={link.link}>{link.name}</Link>
-                  <button
-                    className="text-red-500 font-bold border rounded hover:border-red-500 mx-5 px-3"
-                    onClick={() => removeData(link.$id)}
-                  >
-                     Remove
-                  </button>
+                  {index + 1}. <Link href={link.link}>{link.name}</Link>
+                  <RemoveData docId={link.$id} clId={collectionId} />
                 </li>
               ))}
             </ul>
@@ -141,7 +127,6 @@ const UpdateNav = () => {
 };
 
 export default UpdateNav;
-
 
 /*
 

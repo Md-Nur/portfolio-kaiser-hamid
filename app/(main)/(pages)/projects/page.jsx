@@ -35,37 +35,30 @@ const page = () => {
       });
   }, []);
 
-  const removeData = (docId) => {
-    setRmDocId(docId);
-    setRmAlert(true);
-  };
-
-  const updateData = (docId) => {
-    setUpdateId(docId);
-    setVisibilty(true);
-  };
-
   if (!projectData) {
     return <Loader />;
+  } else if (projectData.length === 0) {
+    return (
+      <div className="py-10 flex flex-col items-center gap-3">
+        {loggedIn && <Edit />}
+        <h1 className="text-3xl font-bold my-5">Projects</h1>
+        <div className="text-center text-red-500 text-xl font-bold">
+          No data found
+        </div>
+      </div>
+    );
   }
 
   return (
     <>
-      {loggedIn && (
-        <button className="w-44" onClick={() => setVisibilty(true)}>
-          <Button>Add new Project</Button>
-        </button>
-      )}
+      {loggedIn && <Edit />}
       <h2 className="text-4xl font-bold text-center py-3 my-3">Projects</h2>
       {error && (
         <div className="text-center text-red-500 text-xl font-bold">
           {error.message}
         </div>
       )}
-      {loggedIn && visibilty && <Edit updateId={updateId} />}
-      {loggedIn && rmAlert && (
-        <RemoveData docId={rmDocId} clId={collectionId} />
-      )}
+
       <div className="text-justify items-center justify-center pl-1 flex flex-col gap-10 mt-10">
         {projectData.map((data) => (
           <Card>
@@ -126,18 +119,10 @@ const page = () => {
             </div>
             {loggedIn && (
               <div className="flex justify-end gap-3">
-                <button
-                  className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
-                  onClick={() => removeData(data.$id)}
-                >
-                  Remove
-                </button>
-                <button
-                  className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
-                  onClick={() => updateData(data.$id)}
-                >
-                  Update
-                </button>
+                <div className="flex justify-end gap-3 items-center">
+                  <RemoveData docId={data.$id} clId={collectionId} />
+                  <Edit data={data} />
+                </div>
               </div>
             )}
           </Card>

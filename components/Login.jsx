@@ -51,7 +51,7 @@ const Login = () => {
                 </label>
                 <div className="mt-2">
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="email"
                     value={formData.email}
                     onChange={(e) =>
@@ -74,7 +74,7 @@ const Login = () => {
                 </div>
                 <div className="mt-2">
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="password"
                     placeholder="Password"
                     value={formData.password}

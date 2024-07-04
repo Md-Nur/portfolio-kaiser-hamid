@@ -20,9 +20,6 @@ const page = () => {
     "Programing Languages": [],
     "Web Development": [],
     Database: [],
-    Expert: [],
-    Intermediate: [],
-    Beginner: [],
     Software: [],
     Others: [],
   };
@@ -44,16 +41,6 @@ const page = () => {
       });
   }, []);
 
-  const removeData = (docId) => {
-    setRmDocId(docId);
-    setRmAlert(true);
-  };
-
-  const updateData = (docId) => {
-    setUpdateId(docId);
-    setVisibilty(true);
-  };
-
   if (skillData) {
     technical["Programing Languages"] = skillData.filter(
       (item) => item.type === "Programing Languages"
@@ -62,14 +49,8 @@ const page = () => {
       (item) => item.type === "Web Development"
     );
     technical.Database = skillData.filter((item) => item.type === "Database");
-    technical.Expert = skillData.filter((item) => item.type === "Expert");
-    technical.Intermediate = skillData.filter(
-      (item) => item.type === "Intermediate"
-    );
-    technical.Beginner = skillData.filter((item) => item.type === "Beginner");
     technical.Software = skillData.filter((item) => item.type === "Software");
     technical.Others = skillData.filter((item) => item.type === "Others");
-
     languages = skillData.filter((item) => item.type === "Language");
   }
   return (
@@ -83,25 +64,18 @@ const page = () => {
         </div>
       )}
 
-      {loggedIn && visibilty && <Edit updateId={updateId} />}
-      {loggedIn && rmAlert && (
-        <RemoveData docId={rmDocId} clId={collectionId} />
-      )}
-
       <div className="flex flex-wrap justify-center items-baseline w-full mt-5">
         {skillData.map((skill, index) => (
           <div key={index}>
             {skill.icon && (
-              <img src={skill.icon} alt="skill" className="h-16 m-2" />
+              <img src={skill.icon} alt={skill?.name} className="h-16 m-2" />
             )}
           </div>
         ))}
       </div>
       {loggedIn && (
         <div className="flex justify-center w-full my-5">
-          <button onClick={() => setVisibilty(true)}>
-            <Button>Add New Skill</Button>
-          </button>
+          <Edit />
         </div>
       )}
       <h2 className="text-3xl mt-20 font-bold">Technical Skills</h2>
@@ -120,19 +94,12 @@ const page = () => {
                         <li className="">
                           {tech.name}
                           {loggedIn && (
-                            <div className="flex justify-end gap-3">
-                              <button
-                                className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
-                                onClick={() => removeData(tech.$id)}
-                              >
-                                Remove
-                              </button>
-                              <button
-                                className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
-                                onClick={() => updateData(tech.$id)}
-                              >
-                                Update
-                              </button>
+                            <div className="flex justify-end gap-3 items-center">
+                              <RemoveData
+                                docId={tech.$id}
+                                clId={collectionId}
+                              />
+                              <Edit data={tech} />
                             </div>
                           )}
                         </li>
@@ -152,19 +119,9 @@ const page = () => {
             <span className="text-sm font-bold text-center md:text-base lg:text-lg">
               {skill.name}
               {loggedIn && (
-                <div className="flex justify-end gap-3">
-                  <button
-                    className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
-                    onClick={() => removeData(skill.$id)}
-                  >
-                    Remove
-                  </button>
-                  <button
-                    className="text-blue-500 font-bold px-5 border  rounded hover:border-blue-700 "
-                    onClick={() => updateData(skill.$id)}
-                  >
-                    Update
-                  </button>
+                <div className="flex justify-end gap-3 items-center">
+                  <RemoveData docId={skill.$id} clId={collectionId} />
+                  <Edit data={skill} />
                 </div>
               )}
             </span>

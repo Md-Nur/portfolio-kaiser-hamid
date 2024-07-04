@@ -14,9 +14,8 @@ const page = () => {
   const [error, setError] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [visibilty, setVisibilty] = useState(false);
-  const [rmAlert, setRmAlert] = useState(false);
+
   const [updateId, setUpdateId] = useState(null);
-  const [rmDocId, setRmDocId] = useState(null);
   const collectionId = conf.collections.researchXp;
 
   useEffect(() => {
@@ -36,11 +35,6 @@ const page = () => {
       });
   }, []);
 
-  const removeData = (docId) => {
-    setRmDocId(docId);
-    setRmAlert(true);
-  };
-
   const updateData = (docId) => {
     setUpdateId(docId);
     setVisibilty(true);
@@ -48,6 +42,23 @@ const page = () => {
 
   if (!researchData) {
     return <Loader />;
+  } else if (researchData.length === 0) {
+    return (
+      <>
+        {loggedIn && (
+          <button className="w-44" onClick={() => setVisibilty(true)}>
+            <Button>Add new Research Experience</Button>
+          </button>
+        )}
+        <h2 className="text-4xl font-bold text-center py-3 my-3">
+          Research Experience
+        </h2>
+        <div className="text-center text-red-500 text-xl font-bold">
+          No data available
+        </div>
+        {loggedIn && visibilty && <Edit updateId={updateId} />}
+      </>
+    );
   }
 
   return (
@@ -66,7 +77,6 @@ const page = () => {
         </div>
       )}
       {loggedIn && visibilty && <Edit updateId={updateId} />}
-      {rmAlert && <RemoveData docId={rmDocId} clId={collectionId} />}
       <div className="text-justify pl-1 flex flex-col gap-10 mt-10">
         {researchData.map((data) => (
           <Card>
@@ -160,12 +170,7 @@ const page = () => {
               ) : null}
               {loggedIn && (
                 <div className="flex justify-end gap-3 w-full">
-                  <button
-                    className="text-red-500 font-bold border rounded hover:border-red-500 px-5"
-                    onClick={() => removeData(data.$id)}
-                  >
-                    Remove
-                  </button>
+                  <RemoveData docId={data.$id} clId={collectionId} />
                   <button
                     className="text-blue-500 font-bold border rounded hover:border-blue-500 px-5"
                     onClick={() => updateData(data.$id)}

@@ -7,7 +7,7 @@ import Footer from "@/components/basic/Footer";
 import Navbar from "@/components/basic/Navbar";
 import React, { useEffect, useState } from "react";
 
-const ProtectedLayout = ({ children }) => {
+const RootLayout = ({ children }) => {
   const [authStatus, setAuthStatus] = useState(false);
   const [loader, setLoader] = useState(true);
 
@@ -20,17 +20,18 @@ const ProtectedLayout = ({ children }) => {
 
   return (
     <AuthProvider value={{ authStatus, setAuthStatus }}>
-      <Navbar />
-      {loader ? (
-        <MainContainer>
-          <Loader />
-        </MainContainer>
-      ) : (
-        children
-      )}
+      <Navbar>
+        {loader ? (
+          <MainContainer>
+            <Loader />
+          </MainContainer>
+        ) : (
+          children
+        )}
+      </Navbar>
       <Footer />
     </AuthProvider>
   );
 };
 
-export default ProtectedLayout;
+export default RootLayout;

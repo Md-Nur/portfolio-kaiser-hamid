@@ -90,7 +90,7 @@ const Edit = ({ updateId }) => {
               <div>
                 <div className="mt-2 space-y-5">
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={education.title}
                     onChange={(e) =>
@@ -104,7 +104,7 @@ const Edit = ({ updateId }) => {
                   />
 
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={education.institution}
                     onChange={(e) =>
@@ -117,7 +117,7 @@ const Edit = ({ updateId }) => {
                     required
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={education.duration}
                     onChange={(e) =>
@@ -130,7 +130,7 @@ const Edit = ({ updateId }) => {
                     required
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={education.description}
                     onChange={(e) =>

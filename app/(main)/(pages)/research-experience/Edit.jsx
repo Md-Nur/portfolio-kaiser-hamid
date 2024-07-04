@@ -82,7 +82,9 @@ const Edit = ({ updateId }) => {
     } else if (researchXp.external_collaborators_education.includes("||")) {
       researchXp.external_collaborators_education =
         researchXp.external_collaborators_education.split("||");
-    } else if (typeof researchXp.external_collaborators_education === "string") {
+    } else if (
+      typeof researchXp.external_collaborators_education === "string"
+    ) {
       researchXp.external_collaborators_education = [
         researchXp.external_collaborators_education,
       ];
@@ -178,7 +180,7 @@ const Edit = ({ updateId }) => {
               <div>
                 <div className="mt-2 space-y-2">
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.title}
                     onChange={(e) =>
@@ -192,7 +194,7 @@ const Edit = ({ updateId }) => {
                   />
 
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.duration}
                     onChange={(e) =>
@@ -205,7 +207,7 @@ const Edit = ({ updateId }) => {
                     required
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.supervisor}
                     onChange={(e) =>
@@ -217,7 +219,7 @@ const Edit = ({ updateId }) => {
                     placeholder="Supervisor Name with Designation"
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.description}
                     onChange={(e) =>
@@ -230,7 +232,7 @@ const Edit = ({ updateId }) => {
                     required
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.imageUrls}
                     onChange={(e) =>
@@ -242,7 +244,7 @@ const Edit = ({ updateId }) => {
                     placeholder="Image Urls. You can add multiple urls by seperating them with ||."
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.imageTitle}
                     onChange={(e) =>
@@ -254,7 +256,7 @@ const Edit = ({ updateId }) => {
                     placeholder="Image Title"
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.main_objectives}
                     onChange={(e) =>
@@ -266,7 +268,7 @@ const Edit = ({ updateId }) => {
                     placeholder="Main Objectives. You can add multiple objectives by seperating them with ||."
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.external_collaborators_names}
                     onChange={(e) =>
@@ -278,7 +280,7 @@ const Edit = ({ updateId }) => {
                     placeholder="External Collaborators Names. You can add multiple names by seperating them with ||."
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.external_collaborators_education}
                     onChange={(e) =>
@@ -290,7 +292,7 @@ const Edit = ({ updateId }) => {
                     placeholder="External Collaborators Education. You can add multiple education by seperating them with ||."
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={researchXp.external_collaborators_company}
                     onChange={(e) =>
@@ -303,7 +305,7 @@ const Edit = ({ updateId }) => {
                   />
 
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="url"
                     value={researchXp.thesisUrl}
                     onChange={(e) =>
@@ -315,7 +317,7 @@ const Edit = ({ updateId }) => {
                     placeholder="Thesis Url"
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="url"
                     value={researchXp.publicationsUrl}
                     onChange={(e) =>
@@ -327,7 +329,7 @@ const Edit = ({ updateId }) => {
                     placeholder="Publication Url"
                   />
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="url"
                     value={researchXp.reports}
                     onChange={(e) =>

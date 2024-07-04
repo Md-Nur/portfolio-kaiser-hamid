@@ -104,7 +104,7 @@ const Edit = ({ updateId }) => {
               <div>
                 <div className="mt-2 space-y-5">
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={achievments.date}
                     onChange={(e) =>
@@ -118,7 +118,7 @@ const Edit = ({ updateId }) => {
                   />
 
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="text"
                     value={achievments.descption}
                     onChange={(e) =>
@@ -132,7 +132,7 @@ const Edit = ({ updateId }) => {
                   />
 
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="url"
                     value={achievments.youtubeLink}
                     onChange={(e) =>
@@ -145,7 +145,7 @@ const Edit = ({ updateId }) => {
                   />
 
                   <input
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black"
+                    className="flex h-10 w-full rounded-md px-3 py-2  "
                     type="url"
                     value={achievments.posterLink}
                     onChange={(e) =>
@@ -157,7 +157,7 @@ const Edit = ({ updateId }) => {
                     placeholder="Poster Link"
                   />
                   <select
-                    className="flex h-10 w-full rounded-md px-3 py-2 text-black bg-white"
+                    className="flex h-10 w-full rounded-md px-3 py-2   bg-white"
                     name="type"
                     id=""
                     value={achievments.type}

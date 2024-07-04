@@ -5,7 +5,7 @@ const Avatar = ({ width, height, shadowSize }) => (
       alt="Hero"
       width={width}
       height={height}
-      className={`${shadowSize} shadow-color2 dark:shadow-color3 rounded-full`}
+      className={`${shadowSize} shadow-base-content rounded-full`}
     />
 );
 export default Avatar;
