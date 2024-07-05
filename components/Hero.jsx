@@ -33,11 +33,11 @@ const Hero = () => {
         </a>
 
         <a
-          href="cv.pdf"
+          href="Md_Nur_E_Alam_Siddiquee_Full_Stack_Developer_Resume.pdf"
           className="btn btn-primary"
           download
         >
-          Download CV
+          Download Resume
         </a>
         <div className="flex gap-3">
           <a href="https://www.facebook.com/Md.Nur9211" target="_blank">
